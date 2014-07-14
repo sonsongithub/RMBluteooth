@@ -8,6 +8,10 @@
 
 #import "RMBTController.h"
 
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
+	#import <UIKit/UIKit.h>
+#endif
+
 #import "RMBTCommon.h"
 
 @interface RMBTController () <CBPeripheralManagerDelegate> {
@@ -49,12 +53,6 @@ static RMBTController *sharedRMBTController = nil;
 	if (manager.state == CBPeripheralManagerStatePoweredOn && manager.isAdvertising == NO) {
 		[self startAdvertise];
 	}
-	else if (manager.state == CBPeripheralManagerStatePoweredOn && manager.state == CBPeripheralStateConnected) {
-		[_peripheralManager stopAdvertising];
-	}
-//	else if (manager.state == CBPeripheralManagerStatePoweredOn && manager.state == CBPeripheralStateDisconnected) {
-//		[self startAdvertise];
-//	}
 }
 
 - (void)startAdvertise {
@@ -63,11 +61,11 @@ static RMBTController *sharedRMBTController = nil;
 	CBMutableCharacteristic *readCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTReadCharacteristicUUID
 																					 properties:CBCharacteristicPropertyRead
 																						  value:nil
-																					permissions:CBAttributePermissionsReadEncryptionRequired];
+																					permissions:CBAttributePermissionsReadable];
 	CBMutableCharacteristic * writeCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTWriteCharacteristicUUID
 																					   properties:CBCharacteristicPropertyWrite
 																							value:nil
-																					  permissions:CBAttributePermissionsWriteEncryptionRequired];
+																					  permissions:CBAttributePermissionsWriteable];
 	CBMutableCharacteristic * notifyCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTNotifyConnectionCharacteristicUUID
 																								  properties:CBCharacteristicPropertyNotify
 																									   value:nil
@@ -111,6 +109,7 @@ static RMBTController *sharedRMBTController = nil;
 	DNSLogMethod
 	_notifyCharacteristic = characteristic;
 	[NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(hoge:) userInfo:nil repeats:YES];
+	DNSLog(@"%d", manager.state);
 }
 
 - (void)hoge:(NSTimer*)timer {
@@ -119,6 +118,8 @@ static RMBTController *sharedRMBTController = nil;
 
 - (void)peripheralManager:(CBPeripheralManager*)manager central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic{
 	DNSLogMethod
+	DNSLog(@"%d", manager.state);
+	[self startAdvertise];
 }
 
 - (void)peripheralManager:(CBPeripheralManager*)manager didReceiveReadRequest:(CBATTRequest *)request {
@@ -129,6 +130,7 @@ static RMBTController *sharedRMBTController = nil;
 
 - (void)peripheralManager:(CBPeripheralManager*)manager didReceiveWriteRequests:(NSArray *)requests{
 	DNSLogMethod
+	DNSLog(@"%d", manager.state);
 	for(CBATTRequest * request in requests){
 		NSData *incommingData = request.value;
 		DNSLog(@"data in %ld", (long)incommingData.length);

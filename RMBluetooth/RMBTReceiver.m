@@ -11,6 +11,8 @@
 #import "RMBTCommon.h"
 #import "RMBTPeripheralInfo.h"
 
+NSString * const RMBTControllerDidChangePeripheralManagerStatus = @"RMBTControllerDidChangePeripheralManagerStatus";
+
 #define CBUUIDEqual(a, b) CFEqual((__bridge CFUUIDRef)a, (__bridge CFUUIDRef)b)
 
 @implementation CBService (RMBTReceiver)
@@ -91,6 +93,16 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 	return sharedRMBTReceiver;
 }
 
+- (BOOL)isConnected {
+	return (_connectedPeripheral.peripheral.state == CBPeripheralStateConnected);
+}
+
+- (void)disconnect {
+	if (_connectedPeripheral) {
+		[_centralManager cancelPeripheralConnection:_connectedPeripheral.peripheral];
+	}
+}
+
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -100,9 +112,29 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
     return self;
 }
 
-- (void)connectPeripheral:(RMBTPeripheralInfo*)peripheral {
-	[_centralManager connectPeripheral:peripheral.peripheral options:nil];
-	_connectedPeripheral = peripheral;
+- (void)connectPeripheral:(RMBTPeripheralInfo*)peripheralInfo {
+	[_centralManager connectPeripheral:peripheralInfo.peripheral options:nil];
+	_connectedPeripheral = peripheralInfo;
+	[self stopScan];
+	[_peripherals removeObject:peripheralInfo];
+}
+
+- (void)startScan {
+	_isScanning = YES;
+	NSDictionary *options = @{CBCentralManagerScanOptionAllowDuplicatesKey : @(NO)};
+#if 0
+	// Following code does not work properly.
+	// central manager filters all UUID.
+	NSArray *UUIDsFilter = @[RMBTServiceUUIDString];
+	[_centralManager scanForPeripheralsWithServices:UUIDsFilter options:options];
+#else
+	[_centralManager scanForPeripheralsWithServices:nil options:options];
+#endif
+}
+
+- (void)stopScan {
+	_isScanning = NO;
+	[_centralManager stopScan];
 }
 
 #pragma mark - CBCentralManagerDelegate
@@ -110,16 +142,7 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 - (void)centralManagerDidUpdateState:(CBCentralManager *)manager {
 	DNSLogMethod
 	if (_centralManager.state == CBCentralManagerStatePoweredOn && _isScanning == NO) {
-		_isScanning = YES;
-		NSDictionary *options = @{CBCentralManagerScanOptionAllowDuplicatesKey : @(NO)};
-#if 0
-		// Following code does not work properly.
-		// central manager filters all UUID.
-		NSArray *UUIDsFilter = @[RMBTServiceUUIDString];
-		[_centralManager scanForPeripheralsWithServices:UUIDsFilter options:options];
-#else
-		[_centralManager scanForPeripheralsWithServices:nil options:options];
-#endif
+		[self startScan];
 	}
 }
 
@@ -155,20 +178,8 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 		p.peripheral = aPeripheral;
 		p.advertisementData = advertisementData;
 		[_peripherals addObject:p];
+		[[NSNotificationCenter defaultCenter] postNotificationName:RMBTControllerDidChangePeripheralManagerStatus object:nil userInfo:nil];
 	}
-	
-//	DNSLog(@"%@", aPeripheral);
-//	DNSLog(@"%@", advertisementData);
-//	DNSLog(@"%@", advertisementData[@"kCBAdvDataServiceUUIDs"][0]);
-//	DNSLog(@"%@", advertisementData[@"kCBAdvDataLocalName"]);
-//	CBUUID *uuid = advertisementData[@"kCBAdvDataServiceUUIDs"][0];
-//	DNSLog(@"%@", uuid.data);
-	
-//	if ([advertisementData[@"kCBAdvDataLocalName"] isEqualToString:@"iPhone5s 64GB"]) {
-//		[_centralManager stopScan];
-//		_connectedPeripheral = aPeripheral;
-//		[_centralManager connectPeripheral:aPeripheral options:nil];
-//	}
 }
 
 - (void)centralManager:(CBCentralManager *)central didRetrievePeripherals:(NSArray *)peripherals {
@@ -184,6 +195,8 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
     DNSLogMethod
 	[_connectedPeripheral.peripheral setDelegate:self];
 	[_connectedPeripheral.peripheral discoverServices:nil];
+	[self stopScan];
+	[[NSNotificationCenter defaultCenter] postNotificationName:RMBTControllerDidChangePeripheralManagerStatus object:nil userInfo:nil];
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error {
@@ -191,10 +204,16 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 	if (error) {
 		DNSLog(@"Error=>%@", error);
 	}
+	_connectedPeripheral = nil;
+	[[NSNotificationCenter defaultCenter] postNotificationName:RMBTControllerDidChangePeripheralManagerStatus object:nil userInfo:nil];
+	[self startScan];
 }
 
 - (void) centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error {
 	DNSLogMethod
+	_connectedPeripheral = nil;
+	[[NSNotificationCenter defaultCenter] postNotificationName:RMBTControllerDidChangePeripheralManagerStatus object:nil userInfo:nil];
+	[self startScan];
 }
 
 #pragma mark - CBPeripheralDelegate

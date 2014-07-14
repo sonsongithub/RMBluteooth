@@ -11,6 +11,11 @@
 #import "RMBTReceiver.h"
 #import "RMBTPeripheralInfo.h"
 
+@interface RMBTDeviceSelectViewController() {
+	UIButton *_disconnectButton;
+}
+@end
+
 @implementation RMBTDeviceSelectViewController
 
 + (UINavigationController*)viewController {
@@ -21,16 +26,38 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+	[self setDisconnectButtonHidden:![[RMBTReceiver sharedInstance] isConnected]];
+}
+
+- (void)setDisconnectButtonHidden:(BOOL)hidden {
+	if (hidden) {
+		[UIView animateWithDuration:0.3
+						 animations:^{
+							 _disconnectButton.alpha = 0;
+						 }
+						 completion:^(BOOL finished) {
+							 [_disconnectButton removeFromSuperview];
+						 }];
+	}
+	else {
+		_disconnectButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[_disconnectButton setBackgroundColor:[[UIColor grayColor] colorWithAlphaComponent:0.5]];
+		[_disconnectButton setTitle:NSLocalizedString(@"Disconnect", nil) forState:UIControlStateNormal];
+		[_disconnectButton addTarget:self action:@selector(disconnect:) forControlEvents:UIControlEventTouchUpInside];
+		[self.view.superview addSubview:_disconnectButton];
+		_disconnectButton.frame = self.view.superview.bounds;
+		_disconnectButton.alpha = 0;
+		[UIView animateWithDuration:0.3
+						 animations:^{
+							 _disconnectButton.alpha = 1;
+						 }
+						 completion:^(BOOL finished) {
+						 }];
+	}
 }
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-//	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//	[button setBackgroundColor:[[UIColor grayColor] colorWithAlphaComponent:0.5]];
-//	[button setTitle:NSLocalizedString(@"Disconnect", nil) forState:UIControlStateNormal];
-//	[button addTarget:self action:@selector(disconnect:) forControlEvents:UIControlEventTouchUpInside];
-//	[self.view.superview addSubview:button];
-//	button.frame = self.view.superview.bounds;
 }
 
 - (void)done:(id)sender {
@@ -38,7 +65,13 @@
 }
 
 - (void)disconnect:(id)sender {
-	[self dismissViewControllerAnimated:YES completion:nil];
+	[[RMBTReceiver sharedInstance] disconnect];
+}
+
+- (void)did:(NSNotification*)notification {
+	DNSLogMethod
+	[self.tableView reloadData];
+	[self setDisconnectButtonHidden:![[RMBTReceiver sharedInstance] isConnected]];
 }
 
 - (void)viewDidLoad {
@@ -46,6 +79,10 @@
 	self.title = NSLocalizedString(@"Select device", nil);
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(did:)
+												 name:RMBTControllerDidChangePeripheralManagerStatus
+											   object:nil];
 	
 }
 
