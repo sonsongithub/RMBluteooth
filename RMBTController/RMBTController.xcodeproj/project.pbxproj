@@ -55,6 +55,10 @@
 		144831691973ABF800E9E674 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830C31973AB1000E9E674 /* UIKit.framework */; };
 		144831711973ABF800E9E674 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1448316F1973ABF800E9E674 /* InfoPlist.strings */; };
 		144831731973ABF800E9E674 /* RMBTControllerSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 144831721973ABF800E9E674 /* RMBTControllerSampleTests.m */; };
+		146854301973D71500201248 /* RMBTPeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1468542E1973D71500201248 /* RMBTPeripheralInfo.m */; };
+		146854341973D72E00201248 /* RMBTPeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1468542E1973D71500201248 /* RMBTPeripheralInfo.m */; };
+		146854351973D72E00201248 /* RMBTPeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1468542E1973D71500201248 /* RMBTPeripheralInfo.m */; };
+		146854361973D72F00201248 /* RMBTPeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1468542E1973D71500201248 /* RMBTPeripheralInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +161,8 @@
 		1448316E1973ABF800E9E674 /* RMBTControllerSampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RMBTControllerSampleTests-Info.plist"; sourceTree = "<group>"; };
 		144831701973ABF800E9E674 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		144831721973ABF800E9E674 /* RMBTControllerSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTControllerSampleTests.m; sourceTree = "<group>"; };
+		1468542C1973D71500201248 /* RMBTPeripheralInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTPeripheralInfo.h; sourceTree = "<group>"; };
+		1468542E1973D71500201248 /* RMBTPeripheralInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTPeripheralInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +325,8 @@
 		144830D81973AB1D00E9E674 /* RMBluetooth */ = {
 			isa = PBXGroup;
 			children = (
+				1468542C1973D71500201248 /* RMBTPeripheralInfo.h */,
+				1468542E1973D71500201248 /* RMBTPeripheralInfo.m */,
 				144830D91973AB1D00E9E674 /* RMBTCommon.h */,
 				144830DA1973AB1D00E9E674 /* RMBTCommon.m */,
 				144830DB1973AB1D00E9E674 /* RMBTController.h */,
@@ -726,6 +734,7 @@
 				144830E01973AB1D00E9E674 /* RMBTController.m in Sources */,
 				144830DF1973AB1D00E9E674 /* RMBTCommon.m in Sources */,
 				144830E11973AB1D00E9E674 /* RMBTReceiver.m in Sources */,
+				146854301973D71500201248 /* RMBTPeripheralInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,6 +753,7 @@
 				1448313D1973AB9B00E9E674 /* RMBTController.m in Sources */,
 				1448313C1973AB9B00E9E674 /* RMBTCommon.m in Sources */,
 				1448313E1973AB9B00E9E674 /* RMBTReceiver.m in Sources */,
+				146854341973D72E00201248 /* RMBTPeripheralInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,6 +770,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				144831401973AB9C00E9E674 /* RMBTController.m in Sources */,
+				146854351973D72E00201248 /* RMBTPeripheralInfo.m in Sources */,
 				144831411973AB9C00E9E674 /* RMBTReceiver.m in Sources */,
 				1448313F1973AB9C00E9E674 /* RMBTCommon.m in Sources */,
 				1448311F1973AB7200E9E674 /* AppDelegate.m in Sources */,
@@ -782,6 +793,7 @@
 				1448315F1973ABF800E9E674 /* ViewController.m in Sources */,
 				144831561973ABF800E9E674 /* AppDelegate.m in Sources */,
 				144831521973ABF800E9E674 /* main.m in Sources */,
+				146854361973D72F00201248 /* RMBTPeripheralInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1369,6 +1381,7 @@
 				144831751973ABF800E9E674 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		144831791973ABF800E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerSampleTests" */ = {
 			isa = XCConfigurationList;
@@ -1377,6 +1390,7 @@
 				144831771973ABF800E9E674 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

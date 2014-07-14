@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class RMBTPeripheralInfo;
+
 @interface RMBTReceiver : NSObject
 + (instancetype)sharedInstance;
+@property (nonatomic, readonly) NSMutableArray *peripherals;
+- (void)connectPeripheral:(RMBTPeripheralInfo*)peripheral;
 @end

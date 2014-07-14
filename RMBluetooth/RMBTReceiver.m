@@ -9,6 +9,7 @@
 #import "RMBTReceiver.h"
 
 #import "RMBTCommon.h"
+#import "RMBTPeripheralInfo.h"
 
 #define CBUUIDEqual(a, b) CFEqual((__bridge CFUUIDRef)a, (__bridge CFUUIDRef)b)
 
@@ -42,10 +43,17 @@
 	NSLog(@" %ld services", (unsigned long)[self.services count]);
 	NSLog(@" %@", self.RSSI);
 	NSLog(@" %@", self.name);
-	if (self.isConnected)
-		NSLog(@" Connected");
-	else
-		NSLog(@" Disconnected");
+	switch (self.state) {
+		case CBPeripheralStateConnected:
+			NSLog(@"CBPeripheralStateConnected");
+			break;
+		case CBPeripheralStateConnecting:
+			NSLog(@"CBPeripheralStateConnecting");
+			break;
+		case CBPeripheralStateDisconnected:
+			NSLog(@"CBPeripheralStateDisconnected");
+			break;
+	};
 	NSLog(@"-->");
 }
 
@@ -63,7 +71,7 @@
 @interface RMBTReceiver() <CBCentralManagerDelegate,CBPeripheralDelegate> {
 	CBCentralManager	*_centralManager;
 	CBService			*_service;
-	CBPeripheral		*_connectedPeripheral;
+	RMBTPeripheralInfo		*_connectedPeripheral;
 	CBCharacteristic	*_readCharacteristic;
 	CBCharacteristic	*_writeCharacteristic;
 	CBCharacteristic	*_notifyCharacteristic;
@@ -92,6 +100,11 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
     return self;
 }
 
+- (void)connectPeripheral:(RMBTPeripheralInfo*)peripheral {
+	[_centralManager connectPeripheral:peripheral.peripheral options:nil];
+	_connectedPeripheral = peripheral;
+}
+
 #pragma mark - CBCentralManagerDelegate
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)manager {
@@ -110,6 +123,15 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 	}
 }
 
+- (BOOL)check:(CBPeripheral*)peripheral {
+	for (RMBTPeripheralInfo *aPeripheral in _peripherals) {
+		if ([peripheral.identifier isEqual:aPeripheral.peripheral.identifier]) {
+			return YES;
+		}
+	}
+	return NO;
+}
+
 - (void)centralManager:(CBCentralManager*)manager didDiscoverPeripheral:(CBPeripheral *)aPeripheral advertisementData:(NSDictionary *)advertisementData	RSSI:(NSNumber *)RSSI {
 	DNSLogMethod
 	
@@ -121,26 +143,26 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 		DNSLog(@"%@", uuid);
 	}
 	
-	BOOL isAlreadyAdded = NO;
+	BOOL isAlreadyAdded = [self check:aPeripheral];
 	
-	for (CBPeripheral *peripheral in _peripherals) {
-		if (CFEqual(peripheral.UUID, aPeripheral.UUID)) {
-			isAlreadyAdded = YES;
-			break;
-		}
-	}
+	[aPeripheral log];
+	
 	
 	if (isAlreadyAdded) {
 	}
 	else {
-		[_peripherals addObject:aPeripheral];
+		RMBTPeripheralInfo *p = [[RMBTPeripheralInfo alloc] init];
+		p.peripheral = aPeripheral;
+		p.advertisementData = advertisementData;
+		[_peripherals addObject:p];
 	}
-	DNSLog(@"%@", aPeripheral);
-	DNSLog(@"%@", advertisementData);
-	DNSLog(@"%@", advertisementData[@"kCBAdvDataServiceUUIDs"][0]);
-	DNSLog(@"%@", advertisementData[@"kCBAdvDataLocalName"]);
-	CBUUID *uuid = advertisementData[@"kCBAdvDataServiceUUIDs"][0];
-	DNSLog(@"%@", uuid.data);
+	
+//	DNSLog(@"%@", aPeripheral);
+//	DNSLog(@"%@", advertisementData);
+//	DNSLog(@"%@", advertisementData[@"kCBAdvDataServiceUUIDs"][0]);
+//	DNSLog(@"%@", advertisementData[@"kCBAdvDataLocalName"]);
+//	CBUUID *uuid = advertisementData[@"kCBAdvDataServiceUUIDs"][0];
+//	DNSLog(@"%@", uuid.data);
 	
 //	if ([advertisementData[@"kCBAdvDataLocalName"] isEqualToString:@"iPhone5s 64GB"]) {
 //		[_centralManager stopScan];
@@ -160,8 +182,8 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)aPeripheral {
     DNSLogMethod
-	[_connectedPeripheral setDelegate:self];
-	[_connectedPeripheral discoverServices:nil];
+	[_connectedPeripheral.peripheral setDelegate:self];
+	[_connectedPeripheral.peripheral discoverServices:nil];
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error {
@@ -205,7 +227,7 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 		for (CBService *aService in aPeripheral.services) {
 			DNSLog(@"%@", aService);
 			DNSLog(@"<<<<<<<<<<%@", aService.UUID.data);
-			CBUUID *cbuuid = [CBUUID UUIDWithString:@"990A"];
+			CBUUID *cbuuid = [CBUUID UUIDWithString:@"990B"];
 			if (CBUUIDEqual(aService.UUID, cbuuid)) {
 				[aPeripheral discoverCharacteristics:nil forService:aService];
 			}
@@ -252,7 +274,7 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 	if (_connectedPeripheral) {
 		CBCharacteristic *ch = [_service characteristicOfCharacteristicUUID:RMBTReadCharacteristicUUID];
 		if (ch)
-			[_connectedPeripheral readValueForCharacteristic:[_service characteristicOfCharacteristicUUID:RMBTReadCharacteristicUUID]];
+			[_connectedPeripheral.peripheral readValueForCharacteristic:[_service characteristicOfCharacteristicUUID:RMBTReadCharacteristicUUID]];
 	}
 }
 
@@ -260,7 +282,7 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 	if (_connectedPeripheral) {
 		CBCharacteristic *ch = [_service characteristicOfCharacteristicUUID:RMBTWriteCharacteristicUUID];
 		if (ch)
-			[_connectedPeripheral writeValue:data forCharacteristic:ch type:CBCharacteristicWriteWithResponse];
+			[_connectedPeripheral.peripheral writeValue:data forCharacteristic:ch type:CBCharacteristicWriteWithResponse];
 	}
 }
 

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface RMBTDeviceSelectViewController : UITableViewController
-
++ (UINavigationController*)viewController;
 @end

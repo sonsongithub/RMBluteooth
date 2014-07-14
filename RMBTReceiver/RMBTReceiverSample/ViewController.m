@@ -16,8 +16,7 @@
 @implementation ViewController
 
 - (IBAction)open:(id)sender {
-	RMBTDeviceSelectViewController *con = [[RMBTDeviceSelectViewController alloc] init];
-	[self presentViewController:con animated:YES completion:nil];
+	[self presentViewController:[RMBTDeviceSelectViewController viewController] animated:YES completion:nil];
 }
 
 @end
