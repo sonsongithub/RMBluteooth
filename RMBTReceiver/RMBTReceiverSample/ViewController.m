@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "RMBTDeviceSelectViewController.h"
 
 @interface ViewController ()
 
@@ -14,16 +15,9 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)open:(id)sender {
+	RMBTDeviceSelectViewController *con = [[RMBTDeviceSelectViewController alloc] init];
+	[self presentViewController:con animated:YES completion:nil];
 }
 
 @end

@@ -36,6 +36,8 @@
 		144830A31973AA0D00E9E674 /* RMBTCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830631973A94000E9E674 /* RMBTCommon.m */; };
 		144830A41973AA0D00E9E674 /* RMBTController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830651973A94000E9E674 /* RMBTController.m */; };
 		144830A51973AA0D00E9E674 /* RMBTReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830671973A94000E9E674 /* RMBTReceiver.m */; };
+		1448317C1973AD7400E9E674 /* RMBTDeviceSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1448317B1973AD7400E9E674 /* RMBTDeviceSelectViewController.m */; };
+		1448317D1973AD7400E9E674 /* RMBTDeviceSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1448317B1973AD7400E9E674 /* RMBTDeviceSelectViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,8 @@
 		144830961973A96200E9E674 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		144830981973A96200E9E674 /* RMBTReceiverSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTReceiverSampleTests.m; sourceTree = "<group>"; };
 		144830A01973A99300E9E674 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		1448317A1973AD7400E9E674 /* RMBTDeviceSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTDeviceSelectViewController.h; sourceTree = "<group>"; };
+		1448317B1973AD7400E9E674 /* RMBTDeviceSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTDeviceSelectViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +230,8 @@
 				144830651973A94000E9E674 /* RMBTController.m */,
 				144830661973A94000E9E674 /* RMBTReceiver.h */,
 				144830671973A94000E9E674 /* RMBTReceiver.m */,
+				1448317A1973AD7400E9E674 /* RMBTDeviceSelectViewController.h */,
+				1448317B1973AD7400E9E674 /* RMBTDeviceSelectViewController.m */,
 			);
 			name = RMBluetooth;
 			path = ../../RMBluetooth;
@@ -421,6 +427,7 @@
 			files = (
 				144830691973A94000E9E674 /* RMBTController.m in Sources */,
 				144830681973A94000E9E674 /* RMBTCommon.m in Sources */,
+				1448317C1973AD7400E9E674 /* RMBTDeviceSelectViewController.m in Sources */,
 				1448306A1973A94000E9E674 /* RMBTReceiver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,6 +447,7 @@
 				144830851973A96200E9E674 /* ViewController.m in Sources */,
 				144830A31973AA0D00E9E674 /* RMBTCommon.m in Sources */,
 				144830A41973AA0D00E9E674 /* RMBTController.m in Sources */,
+				1448317D1973AD7400E9E674 /* RMBTDeviceSelectViewController.m in Sources */,
 				1448307F1973A96200E9E674 /* AppDelegate.m in Sources */,
 				1448307B1973A96200E9E674 /* main.m in Sources */,
 				144830A51973AA0D00E9E674 /* RMBTReceiver.m in Sources */,
@@ -736,6 +744,7 @@
 				1448305D1973A91500E9E674 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1448305E1973A91500E9E674 /* Build configuration list for PBXNativeTarget "RMBTReceiverTests" */ = {
 			isa = XCConfigurationList;
@@ -744,6 +753,7 @@
 				144830601973A91500E9E674 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1448309A1973A96200E9E674 /* Build configuration list for PBXNativeTarget "RMBTReceiverSample" */ = {
 			isa = XCConfigurationList;
@@ -752,6 +762,7 @@
 				1448309C1973A96200E9E674 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1448309D1973A96200E9E674 /* Build configuration list for PBXNativeTarget "RMBTReceiverSampleTests" */ = {
 			isa = XCConfigurationList;
@@ -760,6 +771,7 @@
 				1448309F1973A96200E9E674 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
