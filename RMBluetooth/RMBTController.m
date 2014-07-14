@@ -1,0 +1,145 @@
+//
+//  RMBTController.m
+//  RMBTController
+//
+//  Created by sonson on 2014/07/14.
+//  Copyright (c) 2014年 sonson. All rights reserved.
+//
+
+#import "RMBTController.h"
+
+#import "RMBTCommon.h"
+
+@interface RMBTController () <CBPeripheralManagerDelegate> {
+	CBPeripheralManager		*_peripheralManager;
+	CBCharacteristic		*_readCharacteristic;
+	CBCharacteristic		*_writeCharacteristic;
+	CBCharacteristic		*_notifyCharacteristic;
+}
+@end
+
+static RMBTController *sharedRMBTController = nil;
+
+@implementation RMBTController
+
++ (instancetype)sharedInstance {
+	if (sharedRMBTController == nil) {
+		sharedRMBTController = [[RMBTController alloc] init];
+	}
+	return sharedRMBTController;
+}
+
+- (void)sendLog:(NSString*)log {
+	NSData *data = [log dataUsingEncoding:NSUTF8StringEncoding];
+	[_peripheralManager updateValue:data forCharacteristic:(CBMutableCharacteristic*)_writeCharacteristic onSubscribedCentrals:nil];
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
+    }
+    return self;
+}
+
+#pragma mark - CBPeripheralManagerDelegate
+
+- (void)peripheralManagerDidUpdateState:(CBPeripheralManager*)manager {
+	DNSLogMethod
+	if (manager.state == CBPeripheralManagerStatePoweredOn && manager.isAdvertising == NO) {
+		[self startAdvertise];
+	}
+	else if (manager.state == CBPeripheralManagerStatePoweredOn && manager.state == CBPeripheralStateConnected) {
+		[_peripheralManager stopAdvertising];
+	}
+//	else if (manager.state == CBPeripheralManagerStatePoweredOn && manager.state == CBPeripheralStateDisconnected) {
+//		[self startAdvertise];
+//	}
+}
+
+- (void)startAdvertise {
+	CBMutableService *serviceToFetchFromIOS = [[CBMutableService alloc] initWithType:RMBTServiceUUID
+																			 primary:YES];
+	CBMutableCharacteristic *readCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTReadCharacteristicUUID
+																					 properties:CBCharacteristicPropertyRead
+																						  value:nil
+																					permissions:CBAttributePermissionsReadEncryptionRequired];
+	CBMutableCharacteristic * writeCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTWriteCharacteristicUUID
+																					   properties:CBCharacteristicPropertyWrite
+																							value:nil
+																					  permissions:CBAttributePermissionsWriteEncryptionRequired];
+	CBMutableCharacteristic * notifyCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTNotifyConnectionCharacteristicUUID
+																								  properties:CBCharacteristicPropertyNotify
+																									   value:nil
+																								 permissions:CBAttributePermissionsReadable];
+	[serviceToFetchFromIOS setCharacteristics:@[readCharacteristic, writeCharacteristic, notifyCharacteristic]];
+	[_peripheralManager addService:serviceToFetchFromIOS];
+	
+	_readCharacteristic = readCharacteristic;
+	_writeCharacteristic = writeCharacteristic;
+	_notifyCharacteristic = notifyCharacteristic;
+	
+	NSArray *serviceUUIDList = @[
+								 RMBTServiceUUID
+								 ];
+	
+	NSDictionary *info = @{
+						   CBAdvertisementDataServiceUUIDsKey : serviceUUIDList,
+						   CBAdvertisementDataLocalNameKey : @"Mac"//[UIDevice currentDevice].name,
+						   };
+	
+	[_peripheralManager startAdvertising:info];
+}
+
+
+- (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager*)manager error:(NSError *)error{
+	DNSLogMethod
+	DNSLog(@"%@", error);
+}
+
+- (void)peripheralManager:(CBPeripheralManager*)manager didAddService:(CBService *)service error:(NSError *)error{
+	DNSLogMethod
+	DNSLog(@"%@", error);
+}
+
+- (void)peripheralManager:(CBPeripheralManager*)manager central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic{
+	DNSLogMethod
+	_notifyCharacteristic = characteristic;
+	[NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(hoge:) userInfo:nil repeats:YES];
+}
+
+- (void)hoge:(NSTimer*)timer {
+	[_peripheralManager updateValue:[NSData data] forCharacteristic:(CBMutableCharacteristic*)_notifyCharacteristic onSubscribedCentrals:nil];
+}
+
+- (void)peripheralManager:(CBPeripheralManager*)manager central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic{
+	DNSLogMethod
+}
+
+- (void)peripheralManager:(CBPeripheralManager*)manager didReceiveReadRequest:(CBATTRequest *)request {
+	// 更新なし
+	[request setValue:[NSData data]];
+	[_peripheralManager respondToRequest:request withResult:CBATTErrorSuccess];
+}
+
+- (void)peripheralManager:(CBPeripheralManager*)manager didReceiveWriteRequests:(NSArray *)requests{
+	DNSLogMethod
+	for(CBATTRequest * request in requests){
+		NSData *incommingData = request.value;
+		DNSLog(@"data in %ld", (long)incommingData.length);
+		
+//		NSString *string = [[NSString alloc] initWithData:incommingData encoding:NSUTF8StringEncoding];
+//		DNSLog(@"%@", string);
+		
+//		[self.delegate btlog:self didReceiveData:incommingData];
+		
+		[manager respondToRequest:request withResult:CBATTErrorSuccess];
+	}
+}
+
+- (void)peripheralManagerIsReadyToUpdateSubscribers:(CBPeripheralManager*)manager{
+    DNSLogMethod
+}
+
+
+@end

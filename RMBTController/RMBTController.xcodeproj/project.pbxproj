@@ -1,0 +1,1384 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		144830B31973AB1000E9E674 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830B21973AB1000E9E674 /* Foundation.framework */; };
+		144830C11973AB1000E9E674 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830C01973AB1000E9E674 /* XCTest.framework */; };
+		144830C21973AB1000E9E674 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830B21973AB1000E9E674 /* Foundation.framework */; };
+		144830C41973AB1000E9E674 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830C31973AB1000E9E674 /* UIKit.framework */; };
+		144830C71973AB1000E9E674 /* libRMBTController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830AF1973AB1000E9E674 /* libRMBTController.a */; };
+		144830CD1973AB1000E9E674 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 144830CB1973AB1000E9E674 /* InfoPlist.strings */; };
+		144830CF1973AB1000E9E674 /* RMBTControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830CE1973AB1000E9E674 /* RMBTControllerTests.m */; };
+		144830DF1973AB1D00E9E674 /* RMBTCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DA1973AB1D00E9E674 /* RMBTCommon.m */; };
+		144830E01973AB1D00E9E674 /* RMBTController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DC1973AB1D00E9E674 /* RMBTController.m */; };
+		144830E11973AB1D00E9E674 /* RMBTReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DE1973AB1D00E9E674 /* RMBTReceiver.m */; };
+		144830E81973AB4300E9E674 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830E71973AB4300E9E674 /* Cocoa.framework */; };
+		144830F81973AB4400E9E674 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830C01973AB1000E9E674 /* XCTest.framework */; };
+		144830F91973AB4400E9E674 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830E71973AB4300E9E674 /* Cocoa.framework */; };
+		144830FC1973AB4400E9E674 /* RMBTControllerOSX.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830E61973AB4300E9E674 /* RMBTControllerOSX.dylib */; };
+		144831021973AB4400E9E674 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 144831001973AB4400E9E674 /* InfoPlist.strings */; };
+		144831041973AB4400E9E674 /* RMBTControllerOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 144831031973AB4400E9E674 /* RMBTControllerOSXTests.m */; };
+		144831101973AB7200E9E674 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830E71973AB4300E9E674 /* Cocoa.framework */; };
+		144831161973AB7200E9E674 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 144831141973AB7200E9E674 /* InfoPlist.strings */; };
+		144831181973AB7200E9E674 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 144831171973AB7200E9E674 /* main.m */; };
+		1448311C1973AB7200E9E674 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1448311A1973AB7200E9E674 /* Credits.rtf */; };
+		1448311F1973AB7200E9E674 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1448311E1973AB7200E9E674 /* AppDelegate.m */; };
+		144831221973AB7300E9E674 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144831201973AB7200E9E674 /* MainMenu.xib */; };
+		144831241973AB7300E9E674 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144831231973AB7300E9E674 /* Images.xcassets */; };
+		1448312A1973AB7300E9E674 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830C01973AB1000E9E674 /* XCTest.framework */; };
+		1448312B1973AB7300E9E674 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830E71973AB4300E9E674 /* Cocoa.framework */; };
+		144831331973AB7300E9E674 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 144831311973AB7300E9E674 /* InfoPlist.strings */; };
+		144831351973AB7300E9E674 /* RMBTControllerSampleOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 144831341973AB7300E9E674 /* RMBTControllerSampleOSXTests.m */; };
+		1448313C1973AB9B00E9E674 /* RMBTCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DA1973AB1D00E9E674 /* RMBTCommon.m */; };
+		1448313D1973AB9B00E9E674 /* RMBTController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DC1973AB1D00E9E674 /* RMBTController.m */; };
+		1448313E1973AB9B00E9E674 /* RMBTReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DE1973AB1D00E9E674 /* RMBTReceiver.m */; };
+		1448313F1973AB9C00E9E674 /* RMBTCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DA1973AB1D00E9E674 /* RMBTCommon.m */; };
+		144831401973AB9C00E9E674 /* RMBTController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DC1973AB1D00E9E674 /* RMBTController.m */; };
+		144831411973AB9C00E9E674 /* RMBTReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DE1973AB1D00E9E674 /* RMBTReceiver.m */; };
+		144831471973ABF800E9E674 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830B21973AB1000E9E674 /* Foundation.framework */; };
+		144831491973ABF800E9E674 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144831481973ABF800E9E674 /* CoreGraphics.framework */; };
+		1448314A1973ABF800E9E674 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830C31973AB1000E9E674 /* UIKit.framework */; };
+		144831501973ABF800E9E674 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1448314E1973ABF800E9E674 /* InfoPlist.strings */; };
+		144831521973ABF800E9E674 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 144831511973ABF800E9E674 /* main.m */; };
+		144831561973ABF800E9E674 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 144831551973ABF800E9E674 /* AppDelegate.m */; };
+		144831591973ABF800E9E674 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144831571973ABF800E9E674 /* Main_iPhone.storyboard */; };
+		1448315C1973ABF800E9E674 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1448315A1973ABF800E9E674 /* Main_iPad.storyboard */; };
+		1448315F1973ABF800E9E674 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1448315E1973ABF800E9E674 /* ViewController.m */; };
+		144831611973ABF800E9E674 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144831601973ABF800E9E674 /* Images.xcassets */; };
+		144831671973ABF800E9E674 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830C01973AB1000E9E674 /* XCTest.framework */; };
+		144831681973ABF800E9E674 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830B21973AB1000E9E674 /* Foundation.framework */; };
+		144831691973ABF800E9E674 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830C31973AB1000E9E674 /* UIKit.framework */; };
+		144831711973ABF800E9E674 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1448316F1973ABF800E9E674 /* InfoPlist.strings */; };
+		144831731973ABF800E9E674 /* RMBTControllerSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 144831721973ABF800E9E674 /* RMBTControllerSampleTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		144830C51973AB1000E9E674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144830A71973AB1000E9E674 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 144830AE1973AB1000E9E674;
+			remoteInfo = RMBTController;
+		};
+		144830FA1973AB4400E9E674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144830A71973AB1000E9E674 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 144830E51973AB4300E9E674;
+			remoteInfo = RMBTControllerOSX;
+		};
+		1448312C1973AB7300E9E674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144830A71973AB1000E9E674 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1448310E1973AB7200E9E674;
+			remoteInfo = RMBTControllerSampleOSX;
+		};
+		1448316A1973ABF800E9E674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 144830A71973AB1000E9E674 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 144831451973ABF800E9E674;
+			remoteInfo = RMBTControllerSample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		144830AD1973AB1000E9E674 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		144830AF1973AB1000E9E674 /* libRMBTController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRMBTController.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		144830B21973AB1000E9E674 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		144830B61973AB1000E9E674 /* RMBTController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMBTController-Prefix.pch"; sourceTree = "<group>"; };
+		144830BF1973AB1000E9E674 /* RMBTControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMBTControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		144830C01973AB1000E9E674 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		144830C31973AB1000E9E674 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		144830CA1973AB1000E9E674 /* RMBTControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RMBTControllerTests-Info.plist"; sourceTree = "<group>"; };
+		144830CC1973AB1000E9E674 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		144830CE1973AB1000E9E674 /* RMBTControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTControllerTests.m; sourceTree = "<group>"; };
+		144830D91973AB1D00E9E674 /* RMBTCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTCommon.h; sourceTree = "<group>"; };
+		144830DA1973AB1D00E9E674 /* RMBTCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTCommon.m; sourceTree = "<group>"; };
+		144830DB1973AB1D00E9E674 /* RMBTController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTController.h; sourceTree = "<group>"; };
+		144830DC1973AB1D00E9E674 /* RMBTController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTController.m; sourceTree = "<group>"; };
+		144830DD1973AB1D00E9E674 /* RMBTReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTReceiver.h; sourceTree = "<group>"; };
+		144830DE1973AB1D00E9E674 /* RMBTReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTReceiver.m; sourceTree = "<group>"; };
+		144830E61973AB4300E9E674 /* RMBTControllerOSX.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = RMBTControllerOSX.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		144830E71973AB4300E9E674 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		144830EA1973AB4300E9E674 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		144830EB1973AB4300E9E674 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		144830EC1973AB4300E9E674 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		144830EF1973AB4300E9E674 /* RMBTControllerOSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMBTControllerOSX-Prefix.pch"; sourceTree = "<group>"; };
+		144830F71973AB4300E9E674 /* RMBTControllerOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMBTControllerOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		144830FF1973AB4400E9E674 /* RMBTControllerOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RMBTControllerOSXTests-Info.plist"; sourceTree = "<group>"; };
+		144831011973AB4400E9E674 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		144831031973AB4400E9E674 /* RMBTControllerOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTControllerOSXTests.m; sourceTree = "<group>"; };
+		1448310F1973AB7200E9E674 /* RMBTControllerSampleOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMBTControllerSampleOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		144831131973AB7200E9E674 /* RMBTControllerSampleOSX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RMBTControllerSampleOSX-Info.plist"; sourceTree = "<group>"; };
+		144831151973AB7200E9E674 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		144831171973AB7200E9E674 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		144831191973AB7200E9E674 /* RMBTControllerSampleOSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMBTControllerSampleOSX-Prefix.pch"; sourceTree = "<group>"; };
+		1448311B1973AB7200E9E674 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		1448311D1973AB7200E9E674 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1448311E1973AB7200E9E674 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		144831211973AB7200E9E674 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		144831231973AB7300E9E674 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		144831291973AB7300E9E674 /* RMBTControllerSampleOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMBTControllerSampleOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		144831301973AB7300E9E674 /* RMBTControllerSampleOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RMBTControllerSampleOSXTests-Info.plist"; sourceTree = "<group>"; };
+		144831321973AB7300E9E674 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		144831341973AB7300E9E674 /* RMBTControllerSampleOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTControllerSampleOSXTests.m; sourceTree = "<group>"; };
+		144831461973ABF800E9E674 /* RMBTControllerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMBTControllerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		144831481973ABF800E9E674 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1448314D1973ABF800E9E674 /* RMBTControllerSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RMBTControllerSample-Info.plist"; sourceTree = "<group>"; };
+		1448314F1973ABF800E9E674 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		144831511973ABF800E9E674 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		144831531973ABF800E9E674 /* RMBTControllerSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMBTControllerSample-Prefix.pch"; sourceTree = "<group>"; };
+		144831541973ABF800E9E674 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		144831551973ABF800E9E674 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		144831581973ABF800E9E674 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		1448315B1973ABF800E9E674 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		1448315D1973ABF800E9E674 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1448315E1973ABF800E9E674 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		144831601973ABF800E9E674 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		144831661973ABF800E9E674 /* RMBTControllerSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMBTControllerSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1448316E1973ABF800E9E674 /* RMBTControllerSampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RMBTControllerSampleTests-Info.plist"; sourceTree = "<group>"; };
+		144831701973ABF800E9E674 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		144831721973ABF800E9E674 /* RMBTControllerSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTControllerSampleTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		144830AC1973AB1000E9E674 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144830B31973AB1000E9E674 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144830BC1973AB1000E9E674 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144830C11973AB1000E9E674 /* XCTest.framework in Frameworks */,
+				144830C41973AB1000E9E674 /* UIKit.framework in Frameworks */,
+				144830C71973AB1000E9E674 /* libRMBTController.a in Frameworks */,
+				144830C21973AB1000E9E674 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144830E31973AB4300E9E674 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144830E81973AB4300E9E674 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144830F41973AB4300E9E674 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144830F91973AB4400E9E674 /* Cocoa.framework in Frameworks */,
+				144830F81973AB4400E9E674 /* XCTest.framework in Frameworks */,
+				144830FC1973AB4400E9E674 /* RMBTControllerOSX.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1448310C1973AB7200E9E674 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144831101973AB7200E9E674 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144831261973AB7300E9E674 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1448312B1973AB7300E9E674 /* Cocoa.framework in Frameworks */,
+				1448312A1973AB7300E9E674 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144831431973ABF800E9E674 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144831491973ABF800E9E674 /* CoreGraphics.framework in Frameworks */,
+				1448314A1973ABF800E9E674 /* UIKit.framework in Frameworks */,
+				144831471973ABF800E9E674 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144831631973ABF800E9E674 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144831671973ABF800E9E674 /* XCTest.framework in Frameworks */,
+				144831691973ABF800E9E674 /* UIKit.framework in Frameworks */,
+				144831681973ABF800E9E674 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		144830A61973AB1000E9E674 = {
+			isa = PBXGroup;
+			children = (
+				144830D81973AB1D00E9E674 /* RMBluetooth */,
+				144830B41973AB1000E9E674 /* RMBTController */,
+				144830C81973AB1000E9E674 /* RMBTControllerTests */,
+				144830ED1973AB4300E9E674 /* RMBTControllerOSX */,
+				144830FD1973AB4400E9E674 /* RMBTControllerOSXTests */,
+				1448314B1973ABF800E9E674 /* RMBTControllerSample */,
+				1448316C1973ABF800E9E674 /* RMBTControllerSampleTests */,
+				144831111973AB7200E9E674 /* RMBTControllerSampleOSX */,
+				1448312E1973AB7300E9E674 /* RMBTControllerSampleOSXTests */,
+				144830B11973AB1000E9E674 /* Frameworks */,
+				144830B01973AB1000E9E674 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		144830B01973AB1000E9E674 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				144830AF1973AB1000E9E674 /* libRMBTController.a */,
+				144830BF1973AB1000E9E674 /* RMBTControllerTests.xctest */,
+				144830E61973AB4300E9E674 /* RMBTControllerOSX.dylib */,
+				144830F71973AB4300E9E674 /* RMBTControllerOSXTests.xctest */,
+				1448310F1973AB7200E9E674 /* RMBTControllerSampleOSX.app */,
+				144831291973AB7300E9E674 /* RMBTControllerSampleOSXTests.xctest */,
+				144831461973ABF800E9E674 /* RMBTControllerSample.app */,
+				144831661973ABF800E9E674 /* RMBTControllerSampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		144830B11973AB1000E9E674 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				144830B21973AB1000E9E674 /* Foundation.framework */,
+				144830C01973AB1000E9E674 /* XCTest.framework */,
+				144830C31973AB1000E9E674 /* UIKit.framework */,
+				144830E71973AB4300E9E674 /* Cocoa.framework */,
+				144831481973ABF800E9E674 /* CoreGraphics.framework */,
+				144830E91973AB4300E9E674 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		144830B41973AB1000E9E674 /* RMBTController */ = {
+			isa = PBXGroup;
+			children = (
+				144830B51973AB1000E9E674 /* Supporting Files */,
+			);
+			path = RMBTController;
+			sourceTree = "<group>";
+		};
+		144830B51973AB1000E9E674 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				144830B61973AB1000E9E674 /* RMBTController-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		144830C81973AB1000E9E674 /* RMBTControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				144830CE1973AB1000E9E674 /* RMBTControllerTests.m */,
+				144830C91973AB1000E9E674 /* Supporting Files */,
+			);
+			path = RMBTControllerTests;
+			sourceTree = "<group>";
+		};
+		144830C91973AB1000E9E674 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				144830CA1973AB1000E9E674 /* RMBTControllerTests-Info.plist */,
+				144830CB1973AB1000E9E674 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		144830D81973AB1D00E9E674 /* RMBluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				144830D91973AB1D00E9E674 /* RMBTCommon.h */,
+				144830DA1973AB1D00E9E674 /* RMBTCommon.m */,
+				144830DB1973AB1D00E9E674 /* RMBTController.h */,
+				144830DC1973AB1D00E9E674 /* RMBTController.m */,
+				144830DD1973AB1D00E9E674 /* RMBTReceiver.h */,
+				144830DE1973AB1D00E9E674 /* RMBTReceiver.m */,
+			);
+			name = RMBluetooth;
+			path = ../RMBluetooth;
+			sourceTree = "<group>";
+		};
+		144830E91973AB4300E9E674 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				144830EA1973AB4300E9E674 /* Foundation.framework */,
+				144830EB1973AB4300E9E674 /* CoreData.framework */,
+				144830EC1973AB4300E9E674 /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		144830ED1973AB4300E9E674 /* RMBTControllerOSX */ = {
+			isa = PBXGroup;
+			children = (
+				144830EE1973AB4300E9E674 /* Supporting Files */,
+			);
+			path = RMBTControllerOSX;
+			sourceTree = "<group>";
+		};
+		144830EE1973AB4300E9E674 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				144830EF1973AB4300E9E674 /* RMBTControllerOSX-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		144830FD1973AB4400E9E674 /* RMBTControllerOSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				144831031973AB4400E9E674 /* RMBTControllerOSXTests.m */,
+				144830FE1973AB4400E9E674 /* Supporting Files */,
+			);
+			path = RMBTControllerOSXTests;
+			sourceTree = "<group>";
+		};
+		144830FE1973AB4400E9E674 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				144830FF1973AB4400E9E674 /* RMBTControllerOSXTests-Info.plist */,
+				144831001973AB4400E9E674 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		144831111973AB7200E9E674 /* RMBTControllerSampleOSX */ = {
+			isa = PBXGroup;
+			children = (
+				1448311D1973AB7200E9E674 /* AppDelegate.h */,
+				1448311E1973AB7200E9E674 /* AppDelegate.m */,
+				144831201973AB7200E9E674 /* MainMenu.xib */,
+				144831231973AB7300E9E674 /* Images.xcassets */,
+				144831121973AB7200E9E674 /* Supporting Files */,
+			);
+			path = RMBTControllerSampleOSX;
+			sourceTree = "<group>";
+		};
+		144831121973AB7200E9E674 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				144831131973AB7200E9E674 /* RMBTControllerSampleOSX-Info.plist */,
+				144831141973AB7200E9E674 /* InfoPlist.strings */,
+				144831171973AB7200E9E674 /* main.m */,
+				144831191973AB7200E9E674 /* RMBTControllerSampleOSX-Prefix.pch */,
+				1448311A1973AB7200E9E674 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1448312E1973AB7300E9E674 /* RMBTControllerSampleOSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				144831341973AB7300E9E674 /* RMBTControllerSampleOSXTests.m */,
+				1448312F1973AB7300E9E674 /* Supporting Files */,
+			);
+			path = RMBTControllerSampleOSXTests;
+			sourceTree = "<group>";
+		};
+		1448312F1973AB7300E9E674 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				144831301973AB7300E9E674 /* RMBTControllerSampleOSXTests-Info.plist */,
+				144831311973AB7300E9E674 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1448314B1973ABF800E9E674 /* RMBTControllerSample */ = {
+			isa = PBXGroup;
+			children = (
+				144831541973ABF800E9E674 /* AppDelegate.h */,
+				144831551973ABF800E9E674 /* AppDelegate.m */,
+				144831571973ABF800E9E674 /* Main_iPhone.storyboard */,
+				1448315A1973ABF800E9E674 /* Main_iPad.storyboard */,
+				1448315D1973ABF800E9E674 /* ViewController.h */,
+				1448315E1973ABF800E9E674 /* ViewController.m */,
+				144831601973ABF800E9E674 /* Images.xcassets */,
+				1448314C1973ABF800E9E674 /* Supporting Files */,
+			);
+			path = RMBTControllerSample;
+			sourceTree = "<group>";
+		};
+		1448314C1973ABF800E9E674 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1448314D1973ABF800E9E674 /* RMBTControllerSample-Info.plist */,
+				1448314E1973ABF800E9E674 /* InfoPlist.strings */,
+				144831511973ABF800E9E674 /* main.m */,
+				144831531973ABF800E9E674 /* RMBTControllerSample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1448316C1973ABF800E9E674 /* RMBTControllerSampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				144831721973ABF800E9E674 /* RMBTControllerSampleTests.m */,
+				1448316D1973ABF800E9E674 /* Supporting Files */,
+			);
+			path = RMBTControllerSampleTests;
+			sourceTree = "<group>";
+		};
+		1448316D1973ABF800E9E674 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1448316E1973ABF800E9E674 /* RMBTControllerSampleTests-Info.plist */,
+				1448316F1973ABF800E9E674 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		144830E41973AB4300E9E674 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		144830AE1973AB1000E9E674 /* RMBTController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 144830D21973AB1000E9E674 /* Build configuration list for PBXNativeTarget "RMBTController" */;
+			buildPhases = (
+				144830AB1973AB1000E9E674 /* Sources */,
+				144830AC1973AB1000E9E674 /* Frameworks */,
+				144830AD1973AB1000E9E674 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RMBTController;
+			productName = RMBTController;
+			productReference = 144830AF1973AB1000E9E674 /* libRMBTController.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		144830BE1973AB1000E9E674 /* RMBTControllerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 144830D51973AB1000E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerTests" */;
+			buildPhases = (
+				144830BB1973AB1000E9E674 /* Sources */,
+				144830BC1973AB1000E9E674 /* Frameworks */,
+				144830BD1973AB1000E9E674 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				144830C61973AB1000E9E674 /* PBXTargetDependency */,
+			);
+			name = RMBTControllerTests;
+			productName = RMBTControllerTests;
+			productReference = 144830BF1973AB1000E9E674 /* RMBTControllerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		144830E51973AB4300E9E674 /* RMBTControllerOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 144831051973AB4400E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerOSX" */;
+			buildPhases = (
+				144830E21973AB4300E9E674 /* Sources */,
+				144830E31973AB4300E9E674 /* Frameworks */,
+				144830E41973AB4300E9E674 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RMBTControllerOSX;
+			productName = RMBTControllerOSX;
+			productReference = 144830E61973AB4300E9E674 /* RMBTControllerOSX.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		144830F61973AB4300E9E674 /* RMBTControllerOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 144831081973AB4400E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerOSXTests" */;
+			buildPhases = (
+				144830F31973AB4300E9E674 /* Sources */,
+				144830F41973AB4300E9E674 /* Frameworks */,
+				144830F51973AB4300E9E674 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				144830FB1973AB4400E9E674 /* PBXTargetDependency */,
+			);
+			name = RMBTControllerOSXTests;
+			productName = RMBTControllerOSXTests;
+			productReference = 144830F71973AB4300E9E674 /* RMBTControllerOSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1448310E1973AB7200E9E674 /* RMBTControllerSampleOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 144831361973AB7300E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerSampleOSX" */;
+			buildPhases = (
+				1448310B1973AB7200E9E674 /* Sources */,
+				1448310C1973AB7200E9E674 /* Frameworks */,
+				1448310D1973AB7200E9E674 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RMBTControllerSampleOSX;
+			productName = RMBTControllerSampleOSX;
+			productReference = 1448310F1973AB7200E9E674 /* RMBTControllerSampleOSX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		144831281973AB7300E9E674 /* RMBTControllerSampleOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 144831391973AB7300E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerSampleOSXTests" */;
+			buildPhases = (
+				144831251973AB7300E9E674 /* Sources */,
+				144831261973AB7300E9E674 /* Frameworks */,
+				144831271973AB7300E9E674 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1448312D1973AB7300E9E674 /* PBXTargetDependency */,
+			);
+			name = RMBTControllerSampleOSXTests;
+			productName = RMBTControllerSampleOSXTests;
+			productReference = 144831291973AB7300E9E674 /* RMBTControllerSampleOSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		144831451973ABF800E9E674 /* RMBTControllerSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 144831781973ABF800E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerSample" */;
+			buildPhases = (
+				144831421973ABF800E9E674 /* Sources */,
+				144831431973ABF800E9E674 /* Frameworks */,
+				144831441973ABF800E9E674 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RMBTControllerSample;
+			productName = RMBTControllerSample;
+			productReference = 144831461973ABF800E9E674 /* RMBTControllerSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		144831651973ABF800E9E674 /* RMBTControllerSampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 144831791973ABF800E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerSampleTests" */;
+			buildPhases = (
+				144831621973ABF800E9E674 /* Sources */,
+				144831631973ABF800E9E674 /* Frameworks */,
+				144831641973ABF800E9E674 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1448316B1973ABF800E9E674 /* PBXTargetDependency */,
+			);
+			name = RMBTControllerSampleTests;
+			productName = RMBTControllerSampleTests;
+			productReference = 144831661973ABF800E9E674 /* RMBTControllerSampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		144830A71973AB1000E9E674 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = sonson;
+				TargetAttributes = {
+					144830BE1973AB1000E9E674 = {
+						TestTargetID = 144830E51973AB4300E9E674;
+					};
+					144830F61973AB4300E9E674 = {
+						TestTargetID = 144830E51973AB4300E9E674;
+					};
+					144831281973AB7300E9E674 = {
+						TestTargetID = 144830E51973AB4300E9E674;
+					};
+					144831651973ABF800E9E674 = {
+						TestTargetID = 144830E51973AB4300E9E674;
+					};
+				};
+			};
+			buildConfigurationList = 144830AA1973AB1000E9E674 /* Build configuration list for PBXProject "RMBTController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 144830A61973AB1000E9E674;
+			productRefGroup = 144830B01973AB1000E9E674 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				144830AE1973AB1000E9E674 /* RMBTController */,
+				144830BE1973AB1000E9E674 /* RMBTControllerTests */,
+				144830E51973AB4300E9E674 /* RMBTControllerOSX */,
+				144830F61973AB4300E9E674 /* RMBTControllerOSXTests */,
+				1448310E1973AB7200E9E674 /* RMBTControllerSampleOSX */,
+				144831281973AB7300E9E674 /* RMBTControllerSampleOSXTests */,
+				144831451973ABF800E9E674 /* RMBTControllerSample */,
+				144831651973ABF800E9E674 /* RMBTControllerSampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		144830BD1973AB1000E9E674 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144830CD1973AB1000E9E674 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144830F51973AB4300E9E674 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144831021973AB4400E9E674 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1448310D1973AB7200E9E674 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144831161973AB7200E9E674 /* InfoPlist.strings in Resources */,
+				144831241973AB7300E9E674 /* Images.xcassets in Resources */,
+				1448311C1973AB7200E9E674 /* Credits.rtf in Resources */,
+				144831221973AB7300E9E674 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144831271973AB7300E9E674 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144831331973AB7300E9E674 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144831441973ABF800E9E674 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1448315C1973ABF800E9E674 /* Main_iPad.storyboard in Resources */,
+				144831611973ABF800E9E674 /* Images.xcassets in Resources */,
+				144831591973ABF800E9E674 /* Main_iPhone.storyboard in Resources */,
+				144831501973ABF800E9E674 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144831641973ABF800E9E674 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144831711973ABF800E9E674 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		144830AB1973AB1000E9E674 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144830E01973AB1D00E9E674 /* RMBTController.m in Sources */,
+				144830DF1973AB1D00E9E674 /* RMBTCommon.m in Sources */,
+				144830E11973AB1D00E9E674 /* RMBTReceiver.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144830BB1973AB1000E9E674 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144830CF1973AB1000E9E674 /* RMBTControllerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144830E21973AB4300E9E674 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1448313D1973AB9B00E9E674 /* RMBTController.m in Sources */,
+				1448313C1973AB9B00E9E674 /* RMBTCommon.m in Sources */,
+				1448313E1973AB9B00E9E674 /* RMBTReceiver.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144830F31973AB4300E9E674 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144831041973AB4400E9E674 /* RMBTControllerOSXTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1448310B1973AB7200E9E674 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144831401973AB9C00E9E674 /* RMBTController.m in Sources */,
+				144831411973AB9C00E9E674 /* RMBTReceiver.m in Sources */,
+				1448313F1973AB9C00E9E674 /* RMBTCommon.m in Sources */,
+				1448311F1973AB7200E9E674 /* AppDelegate.m in Sources */,
+				144831181973AB7200E9E674 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144831251973AB7300E9E674 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144831351973AB7300E9E674 /* RMBTControllerSampleOSXTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144831421973ABF800E9E674 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1448315F1973ABF800E9E674 /* ViewController.m in Sources */,
+				144831561973ABF800E9E674 /* AppDelegate.m in Sources */,
+				144831521973ABF800E9E674 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		144831621973ABF800E9E674 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				144831731973ABF800E9E674 /* RMBTControllerSampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		144830C61973AB1000E9E674 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 144830AE1973AB1000E9E674 /* RMBTController */;
+			targetProxy = 144830C51973AB1000E9E674 /* PBXContainerItemProxy */;
+		};
+		144830FB1973AB4400E9E674 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 144830E51973AB4300E9E674 /* RMBTControllerOSX */;
+			targetProxy = 144830FA1973AB4400E9E674 /* PBXContainerItemProxy */;
+		};
+		1448312D1973AB7300E9E674 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1448310E1973AB7200E9E674 /* RMBTControllerSampleOSX */;
+			targetProxy = 1448312C1973AB7300E9E674 /* PBXContainerItemProxy */;
+		};
+		1448316B1973ABF800E9E674 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 144831451973ABF800E9E674 /* RMBTControllerSample */;
+			targetProxy = 1448316A1973ABF800E9E674 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		144830CB1973AB1000E9E674 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				144830CC1973AB1000E9E674 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		144831001973AB4400E9E674 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				144831011973AB4400E9E674 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		144831141973AB7200E9E674 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				144831151973AB7200E9E674 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1448311A1973AB7200E9E674 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1448311B1973AB7200E9E674 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		144831201973AB7200E9E674 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				144831211973AB7200E9E674 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		144831311973AB7300E9E674 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				144831321973AB7300E9E674 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1448314E1973ABF800E9E674 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1448314F1973ABF800E9E674 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		144831571973ABF800E9E674 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				144831581973ABF800E9E674 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		1448315A1973ABF800E9E674 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1448315B1973ABF800E9E674 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		1448316F1973ABF800E9E674 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				144831701973ABF800E9E674 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		144830D01973AB1000E9E674 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		144830D11973AB1000E9E674 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		144830D31973AB1000E9E674 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/RMBTController.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTController/RMBTController-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		144830D41973AB1000E9E674 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/RMBTController.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTController/RMBTController-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		144830D61973AB1000E9E674 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RMBTControllerOSX.dylib";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTController/RMBTController-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RMBTControllerTests/RMBTControllerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		144830D71973AB1000E9E674 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RMBTControllerOSX.dylib";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTController/RMBTController-Prefix.pch";
+				INFOPLIST_FILE = "RMBTControllerTests/RMBTControllerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		144831061973AB4400E9E674 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTControllerOSX/RMBTControllerOSX-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		144831071973AB4400E9E674 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTControllerOSX/RMBTControllerOSX-Prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		144831091973AB4400E9E674 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RMBTControllerOSX.dylib";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTControllerOSX/RMBTControllerOSX-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RMBTControllerOSXTests/RMBTControllerOSXTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		1448310A1973AB4400E9E674 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RMBTControllerOSX.dylib";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTControllerOSX/RMBTControllerOSX-Prefix.pch";
+				INFOPLIST_FILE = "RMBTControllerOSXTests/RMBTControllerOSXTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		144831371973AB7300E9E674 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTControllerSampleOSX/RMBTControllerSampleOSX-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RMBTControllerSampleOSX/RMBTControllerSampleOSX-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		144831381973AB7300E9E674 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTControllerSampleOSX/RMBTControllerSampleOSX-Prefix.pch";
+				INFOPLIST_FILE = "RMBTControllerSampleOSX/RMBTControllerSampleOSX-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		1448313A1973AB7300E9E674 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RMBTControllerOSX.dylib";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTControllerSampleOSX/RMBTControllerSampleOSX-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RMBTControllerSampleOSXTests/RMBTControllerSampleOSXTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		1448313B1973AB7300E9E674 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RMBTControllerOSX.dylib";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTControllerSampleOSX/RMBTControllerSampleOSX-Prefix.pch";
+				INFOPLIST_FILE = "RMBTControllerSampleOSXTests/RMBTControllerSampleOSXTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		144831741973ABF800E9E674 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTControllerSample/RMBTControllerSample-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RMBTControllerSample/RMBTControllerSample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		144831751973ABF800E9E674 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTControllerSample/RMBTControllerSample-Prefix.pch";
+				INFOPLIST_FILE = "RMBTControllerSample/RMBTControllerSample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		144831761973ABF800E9E674 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RMBTControllerOSX.dylib";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTControllerSample/RMBTControllerSample-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RMBTControllerSampleTests/RMBTControllerSampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		144831771973ABF800E9E674 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RMBTControllerOSX.dylib";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RMBTControllerSample/RMBTControllerSample-Prefix.pch";
+				INFOPLIST_FILE = "RMBTControllerSampleTests/RMBTControllerSampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		144830AA1973AB1000E9E674 /* Build configuration list for PBXProject "RMBTController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				144830D01973AB1000E9E674 /* Debug */,
+				144830D11973AB1000E9E674 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		144830D21973AB1000E9E674 /* Build configuration list for PBXNativeTarget "RMBTController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				144830D31973AB1000E9E674 /* Debug */,
+				144830D41973AB1000E9E674 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		144830D51973AB1000E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				144830D61973AB1000E9E674 /* Debug */,
+				144830D71973AB1000E9E674 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		144831051973AB4400E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				144831061973AB4400E9E674 /* Debug */,
+				144831071973AB4400E9E674 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		144831081973AB4400E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				144831091973AB4400E9E674 /* Debug */,
+				1448310A1973AB4400E9E674 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		144831361973AB7300E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerSampleOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				144831371973AB7300E9E674 /* Debug */,
+				144831381973AB7300E9E674 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		144831391973AB7300E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerSampleOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1448313A1973AB7300E9E674 /* Debug */,
+				1448313B1973AB7300E9E674 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		144831781973ABF800E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				144831741973ABF800E9E674 /* Debug */,
+				144831751973ABF800E9E674 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		144831791973ABF800E9E674 /* Build configuration list for PBXNativeTarget "RMBTControllerSampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				144831761973ABF800E9E674 /* Debug */,
+				144831771973ABF800E9E674 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 144830A71973AB1000E9E674 /* Project object */;
+}
