@@ -99,7 +99,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
 	RMBTPeripheralInfo *p = [[[RMBTReceiver sharedInstance] peripherals] objectAtIndex:indexPath.row];
-	cell.textLabel.text = p.advertisementData[@"kCBAdvDataLocalName"];
+	cell.textLabel.text = [p name];
     return cell;
 }
 

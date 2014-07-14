@@ -14,4 +14,6 @@
 @property (nonatomic, strong) CBPeripheral *peripheral;
 @property (nonatomic, copy) NSDictionary *advertisementData;
 
+- (NSString*)name;
+
 @end

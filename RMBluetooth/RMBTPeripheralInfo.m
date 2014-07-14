@@ -10,4 +10,11 @@
 
 @implementation RMBTPeripheralInfo
 
+- (NSString*)name {
+	NSString *name_A = self.advertisementData[@"kCBAdvDataLocalName"];
+	if ([name_A length])
+		return name_A;
+	return _peripheral.name;
+}
+
 @end
