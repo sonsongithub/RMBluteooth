@@ -130,6 +130,13 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 #else
 	[_centralManager scanForPeripheralsWithServices:nil options:options];
 #endif
+	NSArray *connectedPeripherals = [_centralManager retrieveConnectedPeripheralsWithServices:@[RMBTServiceUUID]];
+	for (CBPeripheral *peripheral in connectedPeripherals) {
+		RMBTPeripheralInfo *p = [[RMBTPeripheralInfo alloc] init];
+		p.peripheral = peripheral;
+		[_peripherals addObject:p];
+	}
+	[[NSNotificationCenter defaultCenter] postNotificationName:RMBTControllerDidChangePeripheralManagerStatus object:nil userInfo:nil];
 }
 
 - (void)stopScan {
@@ -178,8 +185,8 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 		p.peripheral = aPeripheral;
 		p.advertisementData = advertisementData;
 		[_peripherals addObject:p];
-		[[NSNotificationCenter defaultCenter] postNotificationName:RMBTControllerDidChangePeripheralManagerStatus object:nil userInfo:nil];
 	}
+	[[NSNotificationCenter defaultCenter] postNotificationName:RMBTControllerDidChangePeripheralManagerStatus object:nil userInfo:nil];
 }
 
 - (void)centralManager:(CBCentralManager *)central didRetrievePeripherals:(NSArray *)peripherals {
