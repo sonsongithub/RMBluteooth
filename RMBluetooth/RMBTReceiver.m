@@ -20,7 +20,7 @@ NSString * const RMBTControllerDidChangePeripheralManagerStatus = @"RMBTControll
 - (void)log {
 	NSLog(@"<--");
 	NSLog(@"CBService UUID = %@", self.UUID);
-	NSLog(@" Peripheral UUID = %@", self.peripheral.UUID);
+	NSLog(@" Peripheral UUID = %@", self.peripheral.identifier);
 	NSLog(@" %ld included services", (unsigned long)[self.includedServices count]);
 	NSLog(@" %ld included characteristics", (unsigned long)[self.characteristics count]);
 	NSLog(@"-->");
@@ -41,7 +41,7 @@ NSString * const RMBTControllerDidChangePeripheralManagerStatus = @"RMBTControll
 
 - (void)log {
 	NSLog(@"<--");
-	NSLog(@"CBPeripheral UUID = %@", self.UUID);
+	NSLog(@"CBPeripheral UUID = %@", self.identifier);
 	NSLog(@" %ld services", (unsigned long)[self.services count]);
 	NSLog(@" %@", self.RSSI);
 	NSLog(@" %@", self.name);
@@ -239,7 +239,7 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 		NSLog(@"%@", str);
 	}
 	else if (characteristic.properties & CBCharacteristicPropertyRead) {
-		NSData *incommingData = characteristic.value;
+		//NSData *incommingData = characteristic.value;
 	}
 }
 

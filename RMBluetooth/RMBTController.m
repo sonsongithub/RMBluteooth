@@ -109,7 +109,7 @@ static RMBTController *sharedRMBTController = nil;
 	DNSLogMethod
 	_notifyCharacteristic = characteristic;
 	[NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(hoge:) userInfo:nil repeats:YES];
-	DNSLog(@"%d", manager.state);
+	DNSLog(@"%ld", (long)manager.state);
 }
 
 - (void)hoge:(NSTimer*)timer {
@@ -118,7 +118,7 @@ static RMBTController *sharedRMBTController = nil;
 
 - (void)peripheralManager:(CBPeripheralManager*)manager central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic{
 	DNSLogMethod
-	DNSLog(@"%d", manager.state);
+	DNSLog(@"%ld", (long)manager.state);
 	[self startAdvertise];
 }
 
@@ -130,7 +130,7 @@ static RMBTController *sharedRMBTController = nil;
 
 - (void)peripheralManager:(CBPeripheralManager*)manager didReceiveWriteRequests:(NSArray *)requests{
 	DNSLogMethod
-	DNSLog(@"%d", manager.state);
+	DNSLog(@"%ld", (long)manager.state);
 	for(CBATTRequest * request in requests){
 		NSData *incommingData = request.value;
 		DNSLog(@"data in %ld", (long)incommingData.length);
