@@ -82,10 +82,15 @@ static RMBTController *sharedRMBTController = nil;
 	NSArray *serviceUUIDList = @[
 								 RMBTServiceUUID
 								 ];
+#if __MAC_OS_X_VERSION_MIN_REQUIRED
+	NSString *name = [[NSHost currentHost] localizedName];
+#elif defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
+	NSString *name = [UIDevice currentDevice].name;
+#endif
 	
 	NSDictionary *info = @{
 						   CBAdvertisementDataServiceUUIDsKey : serviceUUIDList,
-						   CBAdvertisementDataLocalNameKey : @"Mac"//[UIDevice currentDevice].name,
+						   CBAdvertisementDataLocalNameKey : name
 						   };
 	
 	[_peripheralManager startAdvertising:info];
