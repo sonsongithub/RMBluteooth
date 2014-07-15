@@ -19,5 +19,5 @@
 @property (nonatomic, assign) id <RMBTControllerDelegate> delegate;
 
 + (instancetype)sharedInstance;
-
+- (void)hoge;
 @end

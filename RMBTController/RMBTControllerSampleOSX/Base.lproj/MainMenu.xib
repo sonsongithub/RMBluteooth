@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
@@ -709,17 +709,104 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EXP-7V-wQS">
-                                <rect key="frame" x="34" y="167" width="110" height="25"/>
+                                <rect key="frame" x="20" y="167" width="42" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="squareTextured" title="Textured Button" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="smo-Dp-q8q">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="gRg-lz-1zq"/>
+                                </constraints>
+                                <buttonCell key="cell" type="squareTextured" title="Left" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="smo-Dp-q8q">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="left:" target="EiT-Mj-1SZ" id="Al3-lL-f8s"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8GM-oC-8UP">
+                                <rect key="frame" x="116" y="167" width="42" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="squareTextured" title="Right" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VV0-Eo-8y8">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="right:" target="EiT-Mj-1SZ" id="zmX-Kd-b3q"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tGR-OW-CW5">
+                                <rect key="frame" x="53" y="197" width="72" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="Cpe-HG-aji"/>
+                                </constraints>
+                                <buttonCell key="cell" type="squareTextured" title="Forward" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FeT-ZT-Ml4">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="forward:" target="EiT-Mj-1SZ" id="96o-S1-LMS"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5YG-5E-2g7">
+                                <rect key="frame" x="53" y="137" width="72" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="squareTextured" title="Backward" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fjr-dA-RUH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name="AquaKana"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="backward:" target="EiT-Mj-1SZ" id="tFB-SB-v3H"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ORQ-dX-TIA">
+                                <rect key="frame" x="70" y="18" width="39" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="squareTextured" title="Stop" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V07-wN-7t2">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name="AquaKana"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="stop:" target="EiT-Mj-1SZ" id="3ge-ae-26O"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Q3f-Fk-Rej">
+                                <rect key="frame" x="117" y="299" width="33" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="squareTextured" title="Tilt-" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6wY-O2-4h0">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name="AquaKana"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tiltMinus:" target="EiT-Mj-1SZ" id="pHr-na-Jxv"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7ri-7F-y9r">
+                                <rect key="frame" x="33" y="299" width="37" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="squareTextured" title="Tilt+" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wMA-gn-Yin">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name="AquaKana"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tiltPlus:" target="EiT-Mj-1SZ" id="FTM-ec-zcj"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="EXP-7V-wQS" secondAttribute="centerY" id="FKT-jF-0lO"/>
-                            <constraint firstAttribute="centerX" secondItem="EXP-7V-wQS" secondAttribute="centerX" id="ny2-zp-Li6"/>
+                            <constraint firstAttribute="centerX" secondItem="Q3f-Fk-Rej" secondAttribute="centerX" constant="-44.5" id="3qw-By-E3r"/>
+                            <constraint firstAttribute="centerX" secondItem="7ri-7F-y9r" secondAttribute="centerX" constant="37.5" id="5Ws-1h-4x3"/>
+                            <constraint firstAttribute="centerX" secondItem="ORQ-dX-TIA" secondAttribute="centerX" id="9gW-p2-sMM"/>
+                            <constraint firstAttribute="centerX" secondItem="8GM-oC-8UP" secondAttribute="centerX" constant="-48" id="AiC-tK-JLn"/>
+                            <constraint firstItem="7ri-7F-y9r" firstAttribute="top" secondItem="NLn-NT-Prv" secondAttribute="top" constant="37" id="Hz4-vm-IVW"/>
+                            <constraint firstAttribute="centerY" secondItem="8GM-oC-8UP" secondAttribute="centerY" id="Icb-eq-dje"/>
+                            <constraint firstAttribute="centerY" secondItem="5YG-5E-2g7" secondAttribute="centerY" constant="-30" id="JeZ-QW-dbq"/>
+                            <constraint firstAttribute="centerX" secondItem="EXP-7V-wQS" secondAttribute="centerX" constant="48" id="VOw-kh-7Fx"/>
+                            <constraint firstItem="Q3f-Fk-Rej" firstAttribute="top" secondItem="NLn-NT-Prv" secondAttribute="top" constant="37" id="VjK-Ab-mDR"/>
+                            <constraint firstAttribute="bottom" secondItem="ORQ-dX-TIA" secondAttribute="bottom" constant="20" id="esd-4o-naV"/>
+                            <constraint firstAttribute="centerY" secondItem="EXP-7V-wQS" secondAttribute="centerY" id="fBW-o6-hVg"/>
+                            <constraint firstAttribute="centerX" secondItem="5YG-5E-2g7" secondAttribute="centerX" id="i8i-Bg-VY5"/>
+                            <constraint firstAttribute="centerX" secondItem="tGR-OW-CW5" secondAttribute="centerX" id="mXO-YL-sCH"/>
+                            <constraint firstAttribute="centerY" secondItem="tGR-OW-CW5" secondAttribute="centerY" constant="30" id="wXE-i2-xYj"/>
                         </constraints>
                     </customView>
                 </subviews>

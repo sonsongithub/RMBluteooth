@@ -22,11 +22,17 @@ extern NSString	* const RMBTReadCharacteristicUUIDString;
 extern NSString	* const RMBTWriteCharacteristicUUIDString;
 extern NSString	* const RMBTNotifyConnectionCharacteristicUUIDString;
 
+extern NSString	* const RMBTReceiveLogCharacteristicUUIDString;
+extern NSString	* const RMBTSendCommandCharacteristicUUIDString;
+
 // Bluetooth LE UUID
 #define	RMBTServiceUUID									[CBUUID UUIDWithString:RMBTServiceUUIDString]
 #define RMBTReadCharacteristicUUID						[CBUUID UUIDWithString:RMBTReadCharacteristicUUIDString]
 #define RMBTWriteCharacteristicUUID						[CBUUID UUIDWithString:RMBTWriteCharacteristicUUIDString]
 #define RMBTNotifyConnectionCharacteristicUUID			[CBUUID UUIDWithString:RMBTNotifyConnectionCharacteristicUUIDString]
+
+#define RMBTReceiveLogCharacteristicUUID					[CBUUID UUIDWithString:RMBTReceiveLogCharacteristicUUIDString]
+#define RMBTSendCommandCharacteristicUUID				[CBUUID UUIDWithString:RMBTSendCommandCharacteristicUUIDString]
 
 #define _DEBUG
 

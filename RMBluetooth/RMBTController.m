@@ -19,6 +19,9 @@
 	CBCharacteristic		*_readCharacteristic;
 	CBCharacteristic		*_writeCharacteristic;
 	CBCharacteristic		*_notifyCharacteristic;
+	
+	CBCharacteristic		*_receiveLogCharacteristic;
+	CBCharacteristic		*_sendCommandCharacteristic;
 }
 @end
 
@@ -50,24 +53,23 @@ static RMBTController *sharedRMBTController = nil;
 - (void)startAdvertise {
 	CBMutableService *serviceToFetchFromIOS = [[CBMutableService alloc] initWithType:RMBTServiceUUID
 																			 primary:YES];
-	CBMutableCharacteristic *readCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTReadCharacteristicUUID
-																					 properties:CBCharacteristicPropertyRead
-																						  value:nil
-																					permissions:CBAttributePermissionsReadable];
-	CBMutableCharacteristic * writeCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTWriteCharacteristicUUID
-																					   properties:CBCharacteristicPropertyWrite
-																							value:nil
-																					  permissions:CBAttributePermissionsWriteable];
-	CBMutableCharacteristic * notifyCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTNotifyConnectionCharacteristicUUID
-																						properties:CBCharacteristicPropertyNotify
-																							 value:nil
-																					   permissions:CBAttributePermissionsReadable];
-	[serviceToFetchFromIOS setCharacteristics:@[readCharacteristic, writeCharacteristic, notifyCharacteristic]];
-	[_peripheralManager addService:serviceToFetchFromIOS];
 	
-	_readCharacteristic = readCharacteristic;
-	_writeCharacteristic = writeCharacteristic;
-	_notifyCharacteristic = notifyCharacteristic;
+	_receiveLogCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTReceiveLogCharacteristicUUID
+															   properties:CBCharacteristicPropertyWrite
+																	value:nil
+															  permissions:CBAttributePermissionsWriteable];
+	_sendCommandCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTSendCommandCharacteristicUUID
+															   properties:CBCharacteristicPropertyNotify
+																	value:nil
+																   permissions:CBAttributePermissionsWriteable];
+	
+	NSArray *characteristics = @[
+								 _receiveLogCharacteristic,
+								 _sendCommandCharacteristic
+								 ];
+	
+	[serviceToFetchFromIOS setCharacteristics:characteristics];
+	[_peripheralManager addService:serviceToFetchFromIOS];
 	
 	NSArray *serviceUUIDList = @[
 								 RMBTServiceUUID
@@ -107,7 +109,7 @@ static RMBTController *sharedRMBTController = nil;
 
 - (void)peripheralManager:(CBPeripheralManager*)manager central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic{
 	DNSLogMethod
-	_notifyCharacteristic = characteristic;
+	_sendCommandCharacteristic = characteristic;
 	DNSLog(@"%ld", (long)manager.state);
 }
 
@@ -118,23 +120,24 @@ static RMBTController *sharedRMBTController = nil;
 }
 
 - (void)peripheralManager:(CBPeripheralManager*)manager didReceiveReadRequest:(CBATTRequest *)request {
-	// 更新なし
 	[request setValue:[NSData data]];
 	[_peripheralManager respondToRequest:request withResult:CBATTErrorSuccess];
 }
 
 - (void)peripheralManager:(CBPeripheralManager*)manager didReceiveWriteRequests:(NSArray *)requests{
 	DNSLogMethod
-	DNSLog(@"%ld", (long)manager.state);
 	for(CBATTRequest * request in requests){
 		NSData *incommingData = request.value;
 		DNSLog(@"data in %ld", (long)incommingData.length);
 		
-		NSString *string = [[NSString alloc] initWithData:incommingData encoding:NSUTF8StringEncoding];
-		DNSLog(@"%@", string);
-		
-		[self.delegate controller:self didReceiveLog:string];
-	
+		if (CBUUIDEqual(request.characteristic.UUID, _receiveLogCharacteristic.UUID)) {
+			NSString *string = [[NSString alloc] initWithData:incommingData encoding:NSUTF8StringEncoding];
+			[self.delegate controller:self didReceiveLog:string];
+		}
+		else if (CBUUIDEqual(request.characteristic.UUID, _sendCommandCharacteristic.UUID)) {
+			//NSString *string = [[NSString alloc] initWithData:incommingData encoding:NSUTF8StringEncoding];
+		}
+
 		[manager respondToRequest:request withResult:CBATTErrorSuccess];
 	}
 }
@@ -143,5 +146,8 @@ static RMBTController *sharedRMBTController = nil;
     DNSLogMethod
 }
 
+- (void)hoge {
+	[_peripheralManager updateValue:[NSData data] forCharacteristic:(CBMutableCharacteristic*)_sendCommandCharacteristic onSubscribedCentrals:nil];
+}
 
 @end

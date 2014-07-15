@@ -16,10 +16,15 @@ NSString * const RMBTControllerDidChangePeripheralManagerStatus = @"RMBTControll
 @interface RMBTReceiver() <CBCentralManagerDelegate,CBPeripheralDelegate> {
 	CBCentralManager	*_centralManager;
 	CBService			*_service;
-	RMBTPeripheralInfo		*_connectedPeripheral;
+	RMBTPeripheralInfo	*_connectedPeripheral;
+	
 	CBCharacteristic	*_readCharacteristic;
 	CBCharacteristic	*_writeCharacteristic;
 	CBCharacteristic	*_notifyCharacteristic;
+	
+	CBCharacteristic	*_sendLogCharacteristic;
+	CBCharacteristic	*_receiveCommandCharacteristic;
+	
 	BOOL				_isScanning;
 	NSMutableArray		*_peripherals;
 }
@@ -40,16 +45,10 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 
 #pragma mark - Send data
 
-- (void)sendString:(NSString*)string {
+- (void)sendLog:(NSString*)string {
 	NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-	[self send:data];
-}
-
-- (void)send:(NSData*)data {
-	if (_connectedPeripheral) {
-		CBCharacteristic *ch = [_service characteristicOfCharacteristicUUID:RMBTWriteCharacteristicUUID];
-		if (ch)
-			[_connectedPeripheral.peripheral writeValue:data forCharacteristic:ch type:CBCharacteristicWriteWithResponse];
+	if (_connectedPeripheral && _sendLogCharacteristic) {
+		[_connectedPeripheral.peripheral writeValue:data forCharacteristic:_sendLogCharacteristic type:CBCharacteristicWriteWithResponse];
 	}
 }
 
@@ -198,7 +197,7 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 		return;
 	}
 	
-	if (characteristic.properties & CBCharacteristicPropertyNotify) {
+	if ((characteristic.properties & CBCharacteristicPropertyNotify) && CBUUIDEqual(characteristic.UUID, RMBTSendCommandCharacteristicUUID)){
 		NSData *incommingData = characteristic.value;
 		//		DNSLog(@"notify data in %ld", incommingData.length);
 		NSString *str = [[NSString alloc] initWithData:incommingData encoding:NSUTF8StringEncoding];
@@ -239,24 +238,11 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 		for (CBCharacteristic *characteristic in service.characteristics) {
 			DNSLog(@"=>%@", characteristic.UUID);
 		}
-		if ([service.characteristics count] == 3) {
+		if ([service.characteristics count] == 2) {
 			_service = service;
-			{
-				CBCharacteristic *ch = [service characteristicOfCharacteristicUUID:RMBTWriteCharacteristicUUID];
-				if (ch)
-					[aPeripheral writeValue:[NSData data] forCharacteristic:ch type:CBCharacteristicWriteWithResponse];
-			}
-			{
-				CBCharacteristic *ch = [service characteristicOfCharacteristicUUID:RMBTReadCharacteristicUUID];
-				if (ch)
-					[aPeripheral readValueForCharacteristic:[service characteristicOfCharacteristicUUID:RMBTReadCharacteristicUUID]];
-			}
-			{
-				CBCharacteristic *ch = [service characteristicOfCharacteristicUUID:RMBTNotifyConnectionCharacteristicUUID];
-				if (ch) {
-					[aPeripheral setNotifyValue:YES forCharacteristic:ch];
-				}
-			}
+			_sendLogCharacteristic = [service characteristicOfCharacteristicUUID:RMBTReceiveLogCharacteristicUUID];
+			_receiveCommandCharacteristic = [service characteristicOfCharacteristicUUID:RMBTSendCommandCharacteristicUUID];
+			[aPeripheral setNotifyValue:YES forCharacteristic:_receiveCommandCharacteristic];
 		}
 	}
 }
@@ -264,6 +250,7 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
 	DNSLogMethod
 	if (error) {
+		DNSLog(@"Error=%@", error);
 	}
 }
 

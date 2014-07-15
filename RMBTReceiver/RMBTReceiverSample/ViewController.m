@@ -27,21 +27,21 @@
 }
 
 - (IBAction)send:(id)sender {
-	[[RMBTReceiver sharedInstance] sendString:@"test, this is test"];
+	[[RMBTReceiver sharedInstance] sendLog:@"test, this is test"];
 }
 
 - (void)robotDidConnect:(RMCoreRobot *)robot {
     // Currently the only kind of robot is Romo3, so this is just future-proofing
     if (robot.isDrivable && robot.isHeadTiltable && robot.isLEDEquipped) {
         self.robot = (RMCoreRobot<HeadTiltProtocol, DriveProtocol, LEDProtocol> *) robot;
-		[[RMBTReceiver sharedInstance] sendString:@"ROMO is connected."];
+		[[RMBTReceiver sharedInstance] sendLog:@"ROMO is connected."];
     }
 }
 
 - (void)robotDidDisconnect:(RMCoreRobot *)robot {
     if (robot == self.robot) {
         self.robot = nil;
-		[[RMBTReceiver sharedInstance] sendString:@"ROMO is disconnected."];
+		[[RMBTReceiver sharedInstance] sendLog:@"ROMO is disconnected."];
     }
 }
 

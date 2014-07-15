@@ -27,4 +27,26 @@
 	_textView.string = _log;
 }
 
+- (IBAction)forward:(id)sender {
+	[[RMBTController sharedInstance] hoge];
+}
+
+- (IBAction)backward:(id)sender {
+}
+
+- (IBAction)right:(id)sender {
+}
+
+- (IBAction)left:(id)sender {
+}
+
+- (IBAction)stop:(id)sender {
+}
+
+- (IBAction)tiltPlus:(id)sender {
+}
+
+- (IBAction)tiltMinus:(id)sender {
+}
+
 @end
