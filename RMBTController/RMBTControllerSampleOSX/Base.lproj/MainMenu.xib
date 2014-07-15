@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5023" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5023"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -669,11 +669,73 @@
         <window title="RMBTControllerSampleOSX" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
-            <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+            <rect key="contentRect" x="335" y="390" width="645" height="360"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <view key="contentView" id="EiT-Mj-1SZ" customClass="ControllerView">
+                <rect key="frame" x="0.0" y="0.0" width="645" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Caf-3h-hE1">
+                        <rect key="frame" x="186" y="-1" width="460" height="362"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <clipView key="contentView" id="HTm-Yn-ucb">
+                            <rect key="frame" x="1" y="1" width="458" height="360"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView editable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="slx-yD-A0w">
+                                    <rect key="frame" x="0.0" y="0.0" width="458" height="360"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="minSize" width="458" height="360"/>
+                                    <size key="maxSize" width="645" height="10000000"/>
+                                    <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="minSize" width="458" height="360"/>
+                                    <size key="maxSize" width="645" height="10000000"/>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="eLj-uz-Ir6">
+                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="kH7-Vy-BJm">
+                            <rect key="frame" x="443" y="1" width="16" height="360"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="NLn-NT-Prv">
+                        <rect key="frame" x="0.0" y="0.0" width="178" height="360"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EXP-7V-wQS">
+                                <rect key="frame" x="34" y="167" width="110" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="squareTextured" title="Textured Button" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="smo-Dp-q8q">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="EXP-7V-wQS" secondAttribute="centerY" id="FKT-jF-0lO"/>
+                            <constraint firstAttribute="centerX" secondItem="EXP-7V-wQS" secondAttribute="centerX" id="ny2-zp-Li6"/>
+                        </constraints>
+                    </customView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="NLn-NT-Prv" secondAttribute="bottom" id="5MG-K8-AVj"/>
+                    <constraint firstItem="Caf-3h-hE1" firstAttribute="leading" secondItem="NLn-NT-Prv" secondAttribute="trailing" constant="8" id="GbH-yj-nwz"/>
+                    <constraint firstItem="NLn-NT-Prv" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="TRU-bN-4J4"/>
+                    <constraint firstItem="NLn-NT-Prv" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="cFj-7A-4tQ"/>
+                    <constraint firstItem="Caf-3h-hE1" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="186" id="dje-1q-8Uh"/>
+                    <constraint firstAttribute="trailing" secondItem="Caf-3h-hE1" secondAttribute="trailing" constant="-1" id="kiY-ta-YSv"/>
+                    <constraint firstItem="Caf-3h-hE1" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="-1" id="paN-MS-pJi"/>
+                    <constraint firstAttribute="bottom" secondItem="Caf-3h-hE1" secondAttribute="bottom" constant="-1" id="vl1-5I-42S"/>
+                </constraints>
+                <connections>
+                    <outlet property="_textView" destination="slx-yD-A0w" id="fMY-1H-Ul3"/>
+                </connections>
             </view>
         </window>
     </objects>

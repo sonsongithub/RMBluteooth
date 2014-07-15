@@ -59,6 +59,7 @@
 		146854341973D72E00201248 /* RMBTPeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1468542E1973D71500201248 /* RMBTPeripheralInfo.m */; };
 		146854351973D72E00201248 /* RMBTPeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1468542E1973D71500201248 /* RMBTPeripheralInfo.m */; };
 		146854361973D72F00201248 /* RMBTPeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1468542E1973D71500201248 /* RMBTPeripheralInfo.m */; };
+		14DA3071197535B300A4A7DC /* ControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DA3070197535B300A4A7DC /* ControllerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +164,8 @@
 		144831721973ABF800E9E674 /* RMBTControllerSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTControllerSampleTests.m; sourceTree = "<group>"; };
 		1468542C1973D71500201248 /* RMBTPeripheralInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTPeripheralInfo.h; sourceTree = "<group>"; };
 		1468542E1973D71500201248 /* RMBTPeripheralInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTPeripheralInfo.m; sourceTree = "<group>"; };
+		14DA306F197535B300A4A7DC /* ControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerView.h; sourceTree = "<group>"; };
+		14DA3070197535B300A4A7DC /* ControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,6 +390,8 @@
 			children = (
 				1448311D1973AB7200E9E674 /* AppDelegate.h */,
 				1448311E1973AB7200E9E674 /* AppDelegate.m */,
+				14DA306F197535B300A4A7DC /* ControllerView.h */,
+				14DA3070197535B300A4A7DC /* ControllerView.m */,
 				144831201973AB7200E9E674 /* MainMenu.xib */,
 				144831231973AB7300E9E674 /* Images.xcassets */,
 				144831121973AB7200E9E674 /* Supporting Files */,
@@ -774,6 +779,7 @@
 				144831411973AB9C00E9E674 /* RMBTReceiver.m in Sources */,
 				1448313F1973AB9C00E9E674 /* RMBTCommon.m in Sources */,
 				1448311F1973AB7200E9E674 /* AppDelegate.m in Sources */,
+				14DA3071197535B300A4A7DC /* ControllerView.m in Sources */,
 				144831181973AB7200E9E674 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

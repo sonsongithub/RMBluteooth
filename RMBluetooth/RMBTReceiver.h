@@ -10,11 +10,17 @@
 
 extern NSString	* const RMBTControllerDidChangePeripheralManagerStatus;
 
+@class RMBTReceiver;
 @class RMBTPeripheralInfo;
+
+@protocol  RMBTReceiverDelegate <NSObject>
+@end
 
 @interface RMBTReceiver : NSObject
 + (instancetype)sharedInstance;
 @property (nonatomic, readonly) NSMutableArray *peripherals;
+@property (nonatomic, assign) id <RMBTReceiverDelegate> delegate;
+
 - (void)connectPeripheral:(RMBTPeripheralInfo*)peripheral;
 - (BOOL)isConnected;
 - (void)disconnect;

@@ -132,6 +132,8 @@ static RMBTController *sharedRMBTController = nil;
 		
 		NSString *string = [[NSString alloc] initWithData:incommingData encoding:NSUTF8StringEncoding];
 		DNSLog(@"%@", string);
+		
+		[self.delegate controller:self didReceiveLog:string];
 	
 		[manager respondToRequest:request withResult:CBATTErrorSuccess];
 	}
