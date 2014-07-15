@@ -40,6 +40,15 @@
 		1448317D1973AD7400E9E674 /* RMBTDeviceSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1448317B1973AD7400E9E674 /* RMBTDeviceSelectViewController.m */; };
 		146854291973D48300201248 /* RMBTPeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 146854281973D48300201248 /* RMBTPeripheralInfo.m */; };
 		1468542A1973D48300201248 /* RMBTPeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 146854281973D48300201248 /* RMBTPeripheralInfo.m */; };
+		14DA30161975055000A4A7DC /* RMCharacter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 14DA30131975055000A4A7DC /* RMCharacter.bundle */; };
+		14DA30171975055000A4A7DC /* RMCharacter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DA30141975055000A4A7DC /* RMCharacter.framework */; };
+		14DA30181975055000A4A7DC /* RMCharacter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DA30141975055000A4A7DC /* RMCharacter.framework */; };
+		14DA30191975055000A4A7DC /* RMCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DA30151975055000A4A7DC /* RMCore.framework */; };
+		14DA301A1975055000A4A7DC /* RMCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DA30151975055000A4A7DC /* RMCore.framework */; };
+		14DA301C197505C500A4A7DC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DA301B197505C500A4A7DC /* CoreMotion.framework */; };
+		14DA301E197505C900A4A7DC /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DA301D197505C900A4A7DC /* ExternalAccessory.framework */; };
+		14DA3020197505CE00A4A7DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DA301F197505CE00A4A7DC /* QuartzCore.framework */; };
+		14DA3022197505D300A4A7DC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DA3021197505D300A4A7DC /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +117,13 @@
 		1448317B1973AD7400E9E674 /* RMBTDeviceSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTDeviceSelectViewController.m; sourceTree = "<group>"; };
 		146854271973D48300201248 /* RMBTPeripheralInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTPeripheralInfo.h; sourceTree = "<group>"; };
 		146854281973D48300201248 /* RMBTPeripheralInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTPeripheralInfo.m; sourceTree = "<group>"; };
+		14DA30131975055000A4A7DC /* RMCharacter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RMCharacter.bundle; sourceTree = "<group>"; };
+		14DA30141975055000A4A7DC /* RMCharacter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RMCharacter.framework; sourceTree = "<group>"; };
+		14DA30151975055000A4A7DC /* RMCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RMCore.framework; sourceTree = "<group>"; };
+		14DA301B197505C500A4A7DC /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		14DA301D197505C900A4A7DC /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		14DA301F197505CE00A4A7DC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		14DA3021197505D300A4A7DC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +131,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14DA30191975055000A4A7DC /* RMCore.framework in Frameworks */,
 				144830A11973A99300E9E674 /* CoreBluetooth.framework in Frameworks */,
 				1448303C1973A91500E9E674 /* Foundation.framework in Frameworks */,
+				14DA30171975055000A4A7DC /* RMCharacter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,10 +153,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14DA3022197505D300A4A7DC /* AVFoundation.framework in Frameworks */,
+				14DA3020197505CE00A4A7DC /* QuartzCore.framework in Frameworks */,
+				14DA301E197505C900A4A7DC /* ExternalAccessory.framework in Frameworks */,
+				14DA301C197505C500A4A7DC /* CoreMotion.framework in Frameworks */,
 				144830A21973A99900E9E674 /* CoreBluetooth.framework in Frameworks */,
 				144830721973A96200E9E674 /* CoreGraphics.framework in Frameworks */,
 				144830731973A96200E9E674 /* UIKit.framework in Frameworks */,
 				144830701973A96200E9E674 /* Foundation.framework in Frameworks */,
+				14DA301A1975055000A4A7DC /* RMCore.framework in Frameworks */,
+				14DA30181975055000A4A7DC /* RMCharacter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +205,10 @@
 		1448303A1973A91500E9E674 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				14DA3021197505D300A4A7DC /* AVFoundation.framework */,
+				14DA301F197505CE00A4A7DC /* QuartzCore.framework */,
+				14DA301D197505C900A4A7DC /* ExternalAccessory.framework */,
+				14DA301B197505C500A4A7DC /* CoreMotion.framework */,
 				144830A01973A99300E9E674 /* CoreBluetooth.framework */,
 				1448304C1973A91500E9E674 /* UIKit.framework */,
 				1448303B1973A91500E9E674 /* Foundation.framework */,
@@ -193,6 +221,7 @@
 		1448303D1973A91500E9E674 /* RMBTReceiver */ = {
 			isa = PBXGroup;
 			children = (
+				14DA30121975055000A4A7DC /* Frameworks */,
 				144830611973A94000E9E674 /* RMBluetooth */,
 				1448303E1973A91500E9E674 /* Supporting Files */,
 			);
@@ -284,6 +313,17 @@
 				144830951973A96200E9E674 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		14DA30121975055000A4A7DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14DA30131975055000A4A7DC /* RMCharacter.bundle */,
+				14DA30141975055000A4A7DC /* RMCharacter.framework */,
+				14DA30151975055000A4A7DC /* RMCore.framework */,
+			);
+			name = Frameworks;
+			path = ../../Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,6 +452,7 @@
 			files = (
 				144830871973A96200E9E674 /* Images.xcassets in Resources */,
 				144830791973A96200E9E674 /* InfoPlist.strings in Resources */,
+				14DA30161975055000A4A7DC /* RMCharacter.bundle in Resources */,
 				144830821973A96200E9E674 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,6 +566,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -562,6 +607,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -593,6 +642,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/RMBTReceiver.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/sonson/code/RMBluteooth/Frameworks,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RMBTReceiver/RMBTReceiver-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
@@ -605,6 +658,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/RMBTReceiver.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/sonson/code/RMBluteooth/Frameworks,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RMBTReceiver/RMBTReceiver-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
@@ -662,6 +719,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/sonson/code/RMBluteooth/Frameworks,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RMBTReceiverSample/RMBTReceiverSample-Prefix.pch";
@@ -684,6 +742,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/sonson/code/RMBluteooth/Frameworks,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RMBTReceiverSample/RMBTReceiverSample-Prefix.pch";

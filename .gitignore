@@ -19,3 +19,8 @@ revision.plist
 .idea
 info.prefix
 \#*
+
+# ROM SDK
+RMCharacter.bundle
+RMCharacter.framework
+RMCore.framework
