@@ -26,6 +26,8 @@ static RMBTController *sharedRMBTController = nil;
 
 @implementation RMBTController
 
+#pragma mark - Class method
+
 + (instancetype)sharedInstance {
 	if (sharedRMBTController == nil) {
 		sharedRMBTController = [[RMBTController alloc] init];
@@ -33,10 +35,7 @@ static RMBTController *sharedRMBTController = nil;
 	return sharedRMBTController;
 }
 
-- (void)sendLog:(NSString*)log {
-	NSData *data = [log dataUsingEncoding:NSUTF8StringEncoding];
-	[_peripheralManager updateValue:data forCharacteristic:(CBMutableCharacteristic*)_writeCharacteristic onSubscribedCentrals:nil];
-}
+#pragma mark - Override
 
 - (instancetype)init {
     self = [super init];
@@ -46,14 +45,7 @@ static RMBTController *sharedRMBTController = nil;
     return self;
 }
 
-#pragma mark - CBPeripheralManagerDelegate
-
-- (void)peripheralManagerDidUpdateState:(CBPeripheralManager*)manager {
-	DNSLogMethod
-	if (manager.state == CBPeripheralManagerStatePoweredOn && manager.isAdvertising == NO) {
-		[self startAdvertise];
-	}
-}
+#pragma mark - Manage advertising
 
 - (void)startAdvertise {
 	CBMutableService *serviceToFetchFromIOS = [[CBMutableService alloc] initWithType:RMBTServiceUUID
@@ -67,9 +59,9 @@ static RMBTController *sharedRMBTController = nil;
 																							value:nil
 																					  permissions:CBAttributePermissionsWriteable];
 	CBMutableCharacteristic * notifyCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTNotifyConnectionCharacteristicUUID
-																								  properties:CBCharacteristicPropertyNotify
-																									   value:nil
-																								 permissions:CBAttributePermissionsReadable];
+																						properties:CBCharacteristicPropertyNotify
+																							 value:nil
+																					   permissions:CBAttributePermissionsReadable];
 	[serviceToFetchFromIOS setCharacteristics:@[readCharacteristic, writeCharacteristic, notifyCharacteristic]];
 	[_peripheralManager addService:serviceToFetchFromIOS];
 	
@@ -94,6 +86,14 @@ static RMBTController *sharedRMBTController = nil;
 	[_peripheralManager startAdvertising:info];
 }
 
+#pragma mark - CBPeripheralManagerDelegate
+
+- (void)peripheralManagerDidUpdateState:(CBPeripheralManager*)manager {
+	DNSLogMethod
+	if (manager.state == CBPeripheralManagerStatePoweredOn && manager.isAdvertising == NO) {
+		[self startAdvertise];
+	}
+}
 
 - (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager*)manager error:(NSError *)error{
 	DNSLogMethod
@@ -108,12 +108,7 @@ static RMBTController *sharedRMBTController = nil;
 - (void)peripheralManager:(CBPeripheralManager*)manager central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic{
 	DNSLogMethod
 	_notifyCharacteristic = characteristic;
-	[NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(hoge:) userInfo:nil repeats:YES];
 	DNSLog(@"%ld", (long)manager.state);
-}
-
-- (void)hoge:(NSTimer*)timer {
-	[_peripheralManager updateValue:[NSData data] forCharacteristic:(CBMutableCharacteristic*)_notifyCharacteristic onSubscribedCentrals:nil];
 }
 
 - (void)peripheralManager:(CBPeripheralManager*)manager central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic{
@@ -135,11 +130,9 @@ static RMBTController *sharedRMBTController = nil;
 		NSData *incommingData = request.value;
 		DNSLog(@"data in %ld", (long)incommingData.length);
 		
-//		NSString *string = [[NSString alloc] initWithData:incommingData encoding:NSUTF8StringEncoding];
-//		DNSLog(@"%@", string);
-		
-//		[self.delegate btlog:self didReceiveData:incommingData];
-		
+		NSString *string = [[NSString alloc] initWithData:incommingData encoding:NSUTF8StringEncoding];
+		DNSLog(@"%@", string);
+	
 		[manager respondToRequest:request withResult:CBATTErrorSuccess];
 	}
 }

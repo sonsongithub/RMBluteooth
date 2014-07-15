@@ -18,4 +18,5 @@ extern NSString	* const RMBTControllerDidChangePeripheralManagerStatus;
 - (void)connectPeripheral:(RMBTPeripheralInfo*)peripheral;
 - (BOOL)isConnected;
 - (void)disconnect;
+- (void)sendString:(NSString*)string;
 @end

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "RMBTDeviceSelectViewController.h"
+#import "RMBTReceiver.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,10 @@
 
 - (IBAction)open:(id)sender {
 	[self presentViewController:[RMBTDeviceSelectViewController viewController] animated:YES completion:nil];
+}
+
+- (IBAction)send:(id)sender {
+	[[RMBTReceiver sharedInstance] sendString:@"test, this is test"];
 }
 
 @end

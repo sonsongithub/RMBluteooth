@@ -325,14 +325,14 @@
 		144830D81973AB1D00E9E674 /* RMBluetooth */ = {
 			isa = PBXGroup;
 			children = (
-				1468542C1973D71500201248 /* RMBTPeripheralInfo.h */,
-				1468542E1973D71500201248 /* RMBTPeripheralInfo.m */,
 				144830D91973AB1D00E9E674 /* RMBTCommon.h */,
 				144830DA1973AB1D00E9E674 /* RMBTCommon.m */,
 				144830DB1973AB1D00E9E674 /* RMBTController.h */,
 				144830DC1973AB1D00E9E674 /* RMBTController.m */,
 				144830DD1973AB1D00E9E674 /* RMBTReceiver.h */,
 				144830DE1973AB1D00E9E674 /* RMBTReceiver.m */,
+				1468542C1973D71500201248 /* RMBTPeripheralInfo.h */,
+				1468542E1973D71500201248 /* RMBTPeripheralInfo.m */,
 			);
 			name = RMBluetooth;
 			path = ../RMBluetooth;

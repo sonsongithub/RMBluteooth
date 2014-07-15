@@ -29,12 +29,42 @@ NSString * const RMBTControllerDidChangePeripheralManagerStatus = @"RMBTControll
 
 static RMBTReceiver *sharedRMBTReceiver = nil;
 
+#pragma mark - Class method
+
 + (instancetype)sharedInstance {
 	if (sharedRMBTReceiver == nil) {
 		sharedRMBTReceiver = [[RMBTReceiver alloc] init];
 	}
 	return sharedRMBTReceiver;
 }
+
+#pragma mark - Send data
+
+- (void)sendString:(NSString*)string {
+	NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+	[self send:data];
+}
+
+- (void)send:(NSData*)data {
+	if (_connectedPeripheral) {
+		CBCharacteristic *ch = [_service characteristicOfCharacteristicUUID:RMBTWriteCharacteristicUUID];
+		if (ch)
+			[_connectedPeripheral.peripheral writeValue:data forCharacteristic:ch type:CBCharacteristicWriteWithResponse];
+	}
+}
+
+#pragma mark - Manage peripherals
+
+- (BOOL)isAlreadyFoundPeripheral:(CBPeripheral*)peripheral {
+	for (RMBTPeripheralInfo *aPeripheral in _peripherals) {
+		if ([peripheral.identifier isEqual:aPeripheral.peripheral.identifier]) {
+			return YES;
+		}
+	}
+	return NO;
+}
+
+#pragma mark - Connection
 
 - (BOOL)isConnected {
 	return (_connectedPeripheral.peripheral.state == CBPeripheralStateConnected);
@@ -44,15 +74,6 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 	if (_connectedPeripheral) {
 		[_centralManager cancelPeripheralConnection:_connectedPeripheral.peripheral];
 	}
-}
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-		_peripherals = [NSMutableArray array];
-		_centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-    }
-    return self;
 }
 
 - (void)connectPeripheral:(RMBTPeripheralInfo*)peripheralInfo {
@@ -87,6 +108,17 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 	[_centralManager stopScan];
 }
 
+#pragma mark - Override
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+		_peripherals = [NSMutableArray array];
+		_centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    }
+    return self;
+}
+
 #pragma mark - CBCentralManagerDelegate
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)manager {
@@ -94,15 +126,6 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 	if (_centralManager.state == CBCentralManagerStatePoweredOn && _isScanning == NO) {
 		[self startScan];
 	}
-}
-
-- (BOOL)check:(CBPeripheral*)peripheral {
-	for (RMBTPeripheralInfo *aPeripheral in _peripherals) {
-		if ([peripheral.identifier isEqual:aPeripheral.peripheral.identifier]) {
-			return YES;
-		}
-	}
-	return NO;
 }
 
 - (void)centralManager:(CBCentralManager*)manager didDiscoverPeripheral:(CBPeripheral *)aPeripheral advertisementData:(NSDictionary *)advertisementData	RSSI:(NSNumber *)RSSI {
@@ -116,7 +139,7 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 		DNSLog(@"%@", uuid);
 	}
 	
-	BOOL isAlreadyAdded = [self check:aPeripheral];
+	BOOL isAlreadyAdded = [self isAlreadyFoundPeripheral:aPeripheral];
 	
 	[aPeripheral log];
 	
@@ -227,7 +250,6 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 				CBCharacteristic *ch = [service characteristicOfCharacteristicUUID:RMBTReadCharacteristicUUID];
 				if (ch)
 					[aPeripheral readValueForCharacteristic:[service characteristicOfCharacteristicUUID:RMBTReadCharacteristicUUID]];
-				//[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(log:) userInfo:nil repeats:YES];
 			}
 			{
 				CBCharacteristic *ch = [service characteristicOfCharacteristicUUID:RMBTNotifyConnectionCharacteristicUUID];
@@ -236,22 +258,6 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 				}
 			}
 		}
-	}
-}
-
-- (void)log:(NSTimer*)timer {
-	if (_connectedPeripheral) {
-		CBCharacteristic *ch = [_service characteristicOfCharacteristicUUID:RMBTReadCharacteristicUUID];
-		if (ch)
-			[_connectedPeripheral.peripheral readValueForCharacteristic:[_service characteristicOfCharacteristicUUID:RMBTReadCharacteristicUUID]];
-	}
-}
-
-- (void)send:(NSData*)data {
-	if (_connectedPeripheral) {
-		CBCharacteristic *ch = [_service characteristicOfCharacteristicUUID:RMBTWriteCharacteristicUUID];
-		if (ch)
-			[_connectedPeripheral.peripheral writeValue:data forCharacteristic:ch type:CBCharacteristicWriteWithResponse];
 	}
 }
 
