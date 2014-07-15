@@ -13,63 +13,6 @@
 
 NSString * const RMBTControllerDidChangePeripheralManagerStatus = @"RMBTControllerDidChangePeripheralManagerStatus";
 
-#define CBUUIDEqual(a, b) CFEqual((__bridge CFUUIDRef)a, (__bridge CFUUIDRef)b)
-
-@implementation CBService (RMBTReceiver)
-
-- (void)log {
-	NSLog(@"<--");
-	NSLog(@"CBService UUID = %@", self.UUID);
-	NSLog(@" Peripheral UUID = %@", self.peripheral.identifier);
-	NSLog(@" %ld included services", (unsigned long)[self.includedServices count]);
-	NSLog(@" %ld included characteristics", (unsigned long)[self.characteristics count]);
-	NSLog(@"-->");
-}
-
-- (CBCharacteristic*)characteristicOfCharacteristicUUID:(CBUUID*)characteristicUUID {
-	for (CBCharacteristic *characteristic in self.characteristics) {
-		if (CBUUIDEqual(characteristic.UUID, characteristicUUID))
-			return characteristic;
-	}
-	return nil;
-}
-
-@end
-
-
-@implementation CBPeripheral (RMBTReceiver)
-
-- (void)log {
-	NSLog(@"<--");
-	NSLog(@"CBPeripheral UUID = %@", self.identifier);
-	NSLog(@" %ld services", (unsigned long)[self.services count]);
-	NSLog(@" %@", self.RSSI);
-	NSLog(@" %@", self.name);
-	switch (self.state) {
-		case CBPeripheralStateConnected:
-			NSLog(@"CBPeripheralStateConnected");
-			break;
-		case CBPeripheralStateConnecting:
-			NSLog(@"CBPeripheralStateConnecting");
-			break;
-		case CBPeripheralStateDisconnected:
-			NSLog(@"CBPeripheralStateDisconnected");
-			break;
-	};
-	NSLog(@"-->");
-}
-
-- (CBCharacteristic*)characteristicOfCharacteristicUUID:(CBUUID*)characteristicUUID inService:(CBUUID*)serviceUUID {
-	for (CBService *service in self.services) {
-		if (CBUUIDEqual(service.UUID, serviceUUID)) {
-			return [service characteristicOfCharacteristicUUID:characteristicUUID];
-		}
-	}
-	return nil;
-}
-
-@end
-
 @interface RMBTReceiver() <CBCentralManagerDelegate,CBPeripheralDelegate> {
 	CBCentralManager	*_centralManager;
 	CBService			*_service;

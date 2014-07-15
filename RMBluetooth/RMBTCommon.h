@@ -14,6 +14,8 @@
 	#import <CoreBluetooth/CoreBluetooth.h>
 #endif
 
+#define CBUUIDEqual(a, b) CFEqual((__bridge CFUUIDRef)a, (__bridge CFUUIDRef)b)
+
 // Bluetooth LE UUID String
 extern NSString	* const RMBTServiceUUIDString;
 extern NSString	* const RMBTReadCharacteristicUUIDString;
@@ -47,3 +49,14 @@ extern NSString	* const RMBTNotifyConnectionCharacteristicUUIDString;
 	#define DNSLogSize(p)	//
 	#define DNSLogRect(p)	//
 #endif
+
+@interface CBService (RMBTCommon)
+- (void)log;
+- (CBCharacteristic*)characteristicOfCharacteristicUUID:(CBUUID*)characteristicUUID;
+@end
+
+
+@interface CBPeripheral (RMBTCommon)
+- (void)log;
+- (CBCharacteristic*)characteristicOfCharacteristicUUID:(CBUUID*)characteristicUUID inService:(CBUUID*)serviceUUID;
+@end
