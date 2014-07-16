@@ -9,12 +9,9 @@
 #import "RMBTCommon.h"
 
 NSString * const RMBTServiceUUIDString							= @"990B";
-NSString * const RMBTReadCharacteristicUUIDString				= @"2A01";
-NSString * const RMBTWriteCharacteristicUUIDString				= @"2A02";
-NSString * const RMBTNotifyConnectionCharacteristicUUIDString	= @"2A03";
-
-NSString * const RMBTReceiveLogCharacteristicUUIDString			= @"2A04";
-NSString * const RMBTSendCommandCharacteristicUUIDString		= @"2A05";
+NSString * const RMBTWriteLogCharacteristicUUIDString			= @"2A04";
+NSString * const RMBTNotifyCommandCharacteristicUUIDString		= @"2A05";
+NSString * const RMBTWriteROMOAckCharacteristicUUIDString		= @"2A06";
 
 @implementation CBService (RMBTCommon)
 

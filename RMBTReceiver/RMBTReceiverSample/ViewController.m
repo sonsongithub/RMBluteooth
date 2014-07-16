@@ -30,6 +30,10 @@
 	[[RMBTReceiver sharedInstance] sendLog:@"test, this is test"];
 }
 
+- (IBAction)notify:(id)sender {
+	[[RMBTReceiver sharedInstance] notify];
+}
+
 - (void)robotDidConnect:(RMCoreRobot *)robot {
     // Currently the only kind of robot is Romo3, so this is just future-proofing
     if (robot.isDrivable && robot.isHeadTiltable && robot.isLEDEquipped) {

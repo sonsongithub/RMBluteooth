@@ -10,6 +10,7 @@
 
 #import "RMBTCommon.h"
 #import "RMBTPeripheralInfo.h"
+#import <RMCore/RMCore.h>
 
 NSString * const RMBTControllerDidChangePeripheralManagerStatus = @"RMBTControllerDidChangePeripheralManagerStatus";
 
@@ -18,12 +19,9 @@ NSString * const RMBTControllerDidChangePeripheralManagerStatus = @"RMBTControll
 	CBService			*_service;
 	RMBTPeripheralInfo	*_connectedPeripheral;
 	
-	CBCharacteristic	*_readCharacteristic;
-	CBCharacteristic	*_writeCharacteristic;
-	CBCharacteristic	*_notifyCharacteristic;
-	
-	CBCharacteristic	*_sendLogCharacteristic;
-	CBCharacteristic	*_receiveCommandCharacteristic;
+	CBCharacteristic	*_writeLogCharacteristic;
+	CBCharacteristic	*_notifyCommandCharacteristic;
+	CBCharacteristic	*_writeROMOAckCharacteristic;
 	
 	BOOL				_isScanning;
 	NSMutableArray		*_peripherals;
@@ -47,8 +45,8 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 
 - (void)sendLog:(NSString*)string {
 	NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-	if (_connectedPeripheral && _sendLogCharacteristic) {
-		[_connectedPeripheral.peripheral writeValue:data forCharacteristic:_sendLogCharacteristic type:CBCharacteristicWriteWithResponse];
+	if (_connectedPeripheral && _writeLogCharacteristic) {
+		[_connectedPeripheral.peripheral writeValue:data forCharacteristic:_writeLogCharacteristic type:CBCharacteristicWriteWithResponse];
 	}
 }
 
@@ -114,8 +112,14 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
     if (self) {
 		_peripherals = [NSMutableArray array];
 		_centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+		[NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkAck:) userInfo:nil repeats:YES];
     }
     return self;
+}
+
+- (void)checkAck:(NSTimer*)timer {
+	unsigned char flag = (unsigned char)[[RMCore connectedRobots] count];
+	[_connectedPeripheral.peripheral writeValue:[NSData dataWithBytes:&flag length:1] forCharacteristic:_writeROMOAckCharacteristic type:CBCharacteristicWriteWithResponse];
 }
 
 #pragma mark - CBCentralManagerDelegate
@@ -197,7 +201,7 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 		return;
 	}
 	
-	if ((characteristic.properties & CBCharacteristicPropertyNotify) && CBUUIDEqual(characteristic.UUID, RMBTSendCommandCharacteristicUUID)){
+	if ((characteristic.properties & CBCharacteristicPropertyNotify) && CBUUIDEqual(characteristic.UUID, RMBTNotifyCommandCharacteristicUUID)){
 		NSData *incommingData = characteristic.value;
 		//		DNSLog(@"notify data in %ld", incommingData.length);
 		NSString *str = [[NSString alloc] initWithData:incommingData encoding:NSUTF8StringEncoding];
@@ -238,11 +242,13 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 		for (CBCharacteristic *characteristic in service.characteristics) {
 			DNSLog(@"=>%@", characteristic.UUID);
 		}
-		if ([service.characteristics count] == 2) {
+		if ([service.characteristics count] > 0) {
 			_service = service;
-			_sendLogCharacteristic = [service characteristicOfCharacteristicUUID:RMBTReceiveLogCharacteristicUUID];
-			_receiveCommandCharacteristic = [service characteristicOfCharacteristicUUID:RMBTSendCommandCharacteristicUUID];
-			[aPeripheral setNotifyValue:YES forCharacteristic:_receiveCommandCharacteristic];
+			_writeLogCharacteristic = [service characteristicOfCharacteristicUUID:RMBTWriteLogCharacteristicUUID];
+			_notifyCommandCharacteristic = [service characteristicOfCharacteristicUUID:RMBTNotifyCommandCharacteristicUUID];
+			_writeROMOAckCharacteristic = [service characteristicOfCharacteristicUUID:RMBTWriteROMOAckCharacteristicUUID];
+			[aPeripheral setNotifyValue:YES forCharacteristic:_notifyCommandCharacteristic];
+			[aPeripheral setNotifyValue:YES forCharacteristic:_writeROMOAckCharacteristic];
 		}
 	}
 }
@@ -252,6 +258,9 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 	if (error) {
 		DNSLog(@"Error=%@", error);
 	}
+}
+
+- (void)notify {
 }
 
 @end

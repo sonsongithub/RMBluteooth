@@ -16,7 +16,6 @@
 		144830CF1973AB1000E9E674 /* RMBTControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830CE1973AB1000E9E674 /* RMBTControllerTests.m */; };
 		144830DF1973AB1D00E9E674 /* RMBTCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DA1973AB1D00E9E674 /* RMBTCommon.m */; };
 		144830E01973AB1D00E9E674 /* RMBTController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DC1973AB1D00E9E674 /* RMBTController.m */; };
-		144830E11973AB1D00E9E674 /* RMBTReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DE1973AB1D00E9E674 /* RMBTReceiver.m */; };
 		144830E81973AB4300E9E674 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830E71973AB4300E9E674 /* Cocoa.framework */; };
 		144830F81973AB4400E9E674 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830C01973AB1000E9E674 /* XCTest.framework */; };
 		144830F91973AB4400E9E674 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830E71973AB4300E9E674 /* Cocoa.framework */; };
@@ -36,10 +35,8 @@
 		144831351973AB7300E9E674 /* RMBTControllerSampleOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 144831341973AB7300E9E674 /* RMBTControllerSampleOSXTests.m */; };
 		1448313C1973AB9B00E9E674 /* RMBTCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DA1973AB1D00E9E674 /* RMBTCommon.m */; };
 		1448313D1973AB9B00E9E674 /* RMBTController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DC1973AB1D00E9E674 /* RMBTController.m */; };
-		1448313E1973AB9B00E9E674 /* RMBTReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DE1973AB1D00E9E674 /* RMBTReceiver.m */; };
 		1448313F1973AB9C00E9E674 /* RMBTCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DA1973AB1D00E9E674 /* RMBTCommon.m */; };
 		144831401973AB9C00E9E674 /* RMBTController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DC1973AB1D00E9E674 /* RMBTController.m */; };
-		144831411973AB9C00E9E674 /* RMBTReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DE1973AB1D00E9E674 /* RMBTReceiver.m */; };
 		144831471973ABF800E9E674 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830B21973AB1000E9E674 /* Foundation.framework */; };
 		144831491973ABF800E9E674 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144831481973ABF800E9E674 /* CoreGraphics.framework */; };
 		1448314A1973ABF800E9E674 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144830C31973AB1000E9E674 /* UIKit.framework */; };
@@ -738,7 +735,6 @@
 			files = (
 				144830E01973AB1D00E9E674 /* RMBTController.m in Sources */,
 				144830DF1973AB1D00E9E674 /* RMBTCommon.m in Sources */,
-				144830E11973AB1D00E9E674 /* RMBTReceiver.m in Sources */,
 				146854301973D71500201248 /* RMBTPeripheralInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -757,7 +753,6 @@
 			files = (
 				1448313D1973AB9B00E9E674 /* RMBTController.m in Sources */,
 				1448313C1973AB9B00E9E674 /* RMBTCommon.m in Sources */,
-				1448313E1973AB9B00E9E674 /* RMBTReceiver.m in Sources */,
 				146854341973D72E00201248 /* RMBTPeripheralInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -776,7 +771,6 @@
 			files = (
 				144831401973AB9C00E9E674 /* RMBTController.m in Sources */,
 				146854351973D72E00201248 /* RMBTPeripheralInfo.m in Sources */,
-				144831411973AB9C00E9E674 /* RMBTReceiver.m in Sources */,
 				1448313F1973AB9C00E9E674 /* RMBTCommon.m in Sources */,
 				1448311F1973AB7200E9E674 /* AppDelegate.m in Sources */,
 				14DA3071197535B300A4A7DC /* ControllerView.m in Sources */,

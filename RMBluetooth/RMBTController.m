@@ -16,12 +16,10 @@
 
 @interface RMBTController () <CBPeripheralManagerDelegate> {
 	CBPeripheralManager		*_peripheralManager;
-	CBCharacteristic		*_readCharacteristic;
-	CBCharacteristic		*_writeCharacteristic;
-	CBCharacteristic		*_notifyCharacteristic;
 	
-	CBCharacteristic		*_receiveLogCharacteristic;
-	CBCharacteristic		*_sendCommandCharacteristic;
+	CBCharacteristic		*_writeLogCharacteristic;
+	CBCharacteristic		*_notifyCommandCharacteristic;
+	CBCharacteristic		*_writeROMOAckCharacteristic;
 }
 @end
 
@@ -54,18 +52,24 @@ static RMBTController *sharedRMBTController = nil;
 	CBMutableService *serviceToFetchFromIOS = [[CBMutableService alloc] initWithType:RMBTServiceUUID
 																			 primary:YES];
 	
-	_receiveLogCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTReceiveLogCharacteristicUUID
-															   properties:CBCharacteristicPropertyWrite
-																	value:nil
-															  permissions:CBAttributePermissionsWriteable];
-	_sendCommandCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTSendCommandCharacteristicUUID
-															   properties:CBCharacteristicPropertyNotify
-																	value:nil
-																   permissions:CBAttributePermissionsWriteable];
+	_writeLogCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTWriteLogCharacteristicUUID
+																 properties:CBCharacteristicPropertyWrite
+																	  value:nil
+																permissions:CBAttributePermissionsWriteable];
+	_notifyCommandCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTNotifyCommandCharacteristicUUID
+																	  properties:CBCharacteristicPropertyNotify
+																		   value:nil
+																	 permissions:CBAttributePermissionsWriteable];
+	_writeROMOAckCharacteristic = [[CBMutableCharacteristic alloc] initWithType:RMBTWriteROMOAckCharacteristicUUID
+																	  properties:CBCharacteristicPropertyWrite
+																		   value:nil
+																	 permissions:CBAttributePermissionsWriteable];
+
 	
 	NSArray *characteristics = @[
-								 _receiveLogCharacteristic,
-								 _sendCommandCharacteristic
+								 _writeLogCharacteristic,
+								 _notifyCommandCharacteristic,
+								 _writeROMOAckCharacteristic
 								 ];
 	
 	[serviceToFetchFromIOS setCharacteristics:characteristics];
@@ -109,8 +113,6 @@ static RMBTController *sharedRMBTController = nil;
 
 - (void)peripheralManager:(CBPeripheralManager*)manager central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic{
 	DNSLogMethod
-	_sendCommandCharacteristic = characteristic;
-	DNSLog(@"%ld", (long)manager.state);
 }
 
 - (void)peripheralManager:(CBPeripheralManager*)manager central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic{
@@ -130,12 +132,16 @@ static RMBTController *sharedRMBTController = nil;
 		NSData *incommingData = request.value;
 		DNSLog(@"data in %ld", (long)incommingData.length);
 		
-		if (CBUUIDEqual(request.characteristic.UUID, _receiveLogCharacteristic.UUID)) {
+		if (CBUUIDEqual(request.characteristic.UUID, _writeLogCharacteristic.UUID)) {
 			NSString *string = [[NSString alloc] initWithData:incommingData encoding:NSUTF8StringEncoding];
 			[self.delegate controller:self didReceiveLog:string];
 		}
-		else if (CBUUIDEqual(request.characteristic.UUID, _sendCommandCharacteristic.UUID)) {
-			//NSString *string = [[NSString alloc] initWithData:incommingData encoding:NSUTF8StringEncoding];
+		else if (CBUUIDEqual(request.characteristic.UUID, _notifyCommandCharacteristic.UUID)) {
+		}
+		else if (CBUUIDEqual(request.characteristic.UUID, _writeROMOAckCharacteristic.UUID)) {
+			unsigned char *p = (unsigned char*)[incommingData bytes];
+			unsigned char flag = *p;
+			DNSLog(@"%ld", flag);
 		}
 
 		[manager respondToRequest:request withResult:CBATTErrorSuccess];
@@ -147,7 +153,7 @@ static RMBTController *sharedRMBTController = nil;
 }
 
 - (void)hoge {
-	[_peripheralManager updateValue:[NSData data] forCharacteristic:(CBMutableCharacteristic*)_sendCommandCharacteristic onSubscribedCentrals:nil];
+	[_peripheralManager updateValue:[NSData data] forCharacteristic:(CBMutableCharacteristic*)_notifyCommandCharacteristic onSubscribedCentrals:nil];
 }
 
 @end
