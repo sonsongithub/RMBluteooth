@@ -14,6 +14,7 @@ extern NSString	* const RMBTControllerDidChangePeripheralManagerStatus;
 @class RMBTPeripheralInfo;
 
 @protocol  RMBTReceiverDelegate <NSObject>
+- (void)receiver:(RMBTReceiver*)receiver didReceiveCommand:(char)c;
 @end
 
 @interface RMBTReceiver : NSObject

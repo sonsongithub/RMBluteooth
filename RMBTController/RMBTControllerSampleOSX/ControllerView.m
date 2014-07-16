@@ -28,25 +28,31 @@
 }
 
 - (IBAction)forward:(id)sender {
-	[[RMBTController sharedInstance] hoge];
+	[[RMBTController sharedInstance] sendChar:'f'];
 }
 
 - (IBAction)backward:(id)sender {
+	[[RMBTController sharedInstance] sendChar:'b'];
 }
 
 - (IBAction)right:(id)sender {
+	[[RMBTController sharedInstance] sendChar:'r'];
 }
 
 - (IBAction)left:(id)sender {
+	[[RMBTController sharedInstance] sendChar:'l'];
 }
 
 - (IBAction)stop:(id)sender {
+	[[RMBTController sharedInstance] sendChar:'s'];
 }
 
 - (IBAction)tiltPlus:(id)sender {
+	[[RMBTController sharedInstance] sendChar:'p'];
 }
 
 - (IBAction)tiltMinus:(id)sender {
+	[[RMBTController sharedInstance] sendChar:'m'];
 }
 
 @end

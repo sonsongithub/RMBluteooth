@@ -20,4 +20,5 @@
 
 + (instancetype)sharedInstance;
 - (void)hoge;
+- (void)sendChar:(char)c;
 @end

@@ -11,15 +11,44 @@
 #import "RMBTReceiver.h"
 #import <RMCore/RMCore.h>
 
-@interface ViewController () <RMCoreDelegate>
+@interface ViewController () <RMCoreDelegate, RMBTReceiverDelegate>
 @property (nonatomic, strong) RMCoreRobot<HeadTiltProtocol, DriveProtocol, LEDProtocol> *robot;
 @end
 
 @implementation ViewController
 
+- (void)receiver:(RMBTReceiver *)receiver didReceiveCommand:(char)c {
+	switch (c) {
+		case 'f':
+			[self.robot driveForwardWithSpeed:0.5];
+			break;
+		case 'b':
+			[self.robot driveBackwardWithSpeed:0.5];
+			break;
+		case 'r':
+			[self.robot turnByAngle:-20 withRadius:RM_DRIVE_RADIUS_TURN_IN_PLACE completion:nil];
+			break;
+		case 'l':
+			[self.robot turnByAngle:20 withRadius:RM_DRIVE_RADIUS_TURN_IN_PLACE completion:nil];
+			break;
+		case 's':
+			[self.robot stopAllMotion];
+			break;
+		case 'p':
+			[self.robot tiltByAngle:5 completion:nil];
+			break;
+		case 'm':
+			[self.robot tiltByAngle:-5 completion:nil];
+			break;
+		default:
+			break;
+	}
+}
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[RMCore setDelegate:self];
+	[RMBTReceiver sharedInstance].delegate = self;
 }
 
 - (IBAction)open:(id)sender {

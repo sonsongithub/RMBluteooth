@@ -152,6 +152,11 @@ static RMBTController *sharedRMBTController = nil;
     DNSLogMethod
 }
 
+- (void)sendChar:(char)c {
+	NSData *data = [NSData dataWithBytes:&c length:1];
+	[_peripheralManager updateValue:data forCharacteristic:(CBMutableCharacteristic*)_notifyCommandCharacteristic onSubscribedCentrals:nil];
+}
+
 - (void)hoge {
 	[_peripheralManager updateValue:[NSData data] forCharacteristic:(CBMutableCharacteristic*)_notifyCommandCharacteristic onSubscribedCentrals:nil];
 }

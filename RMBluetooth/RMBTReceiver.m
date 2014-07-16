@@ -204,8 +204,8 @@ static RMBTReceiver *sharedRMBTReceiver = nil;
 	if ((characteristic.properties & CBCharacteristicPropertyNotify) && CBUUIDEqual(characteristic.UUID, RMBTNotifyCommandCharacteristicUUID)){
 		NSData *incommingData = characteristic.value;
 		//		DNSLog(@"notify data in %ld", incommingData.length);
-		NSString *str = [[NSString alloc] initWithData:incommingData encoding:NSUTF8StringEncoding];
-		NSLog(@"%@", str);
+		char c = *(char*)[incommingData bytes];
+		[self.delegate receiver:self didReceiveCommand:c];
 	}
 	else if (characteristic.properties & CBCharacteristicPropertyRead) {
 		//NSData *incommingData = characteristic.value;
