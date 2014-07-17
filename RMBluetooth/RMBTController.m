@@ -141,7 +141,7 @@ static RMBTController *sharedRMBTController = nil;
 		else if (CBUUIDEqual(request.characteristic.UUID, _writeROMOAckCharacteristic.UUID)) {
 			unsigned char *p = (unsigned char*)[incommingData bytes];
 			unsigned char flag = *p;
-			DNSLog(@"%ld", flag);
+			DNSLog(@"%ld", (long)flag);
 		}
 
 		[manager respondToRequest:request withResult:CBATTErrorSuccess];

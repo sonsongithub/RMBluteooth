@@ -8,22 +8,56 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+#import "RMBTController.h"
 
+@interface ViewController () <RMBTControllerDelegate> {
+	IBOutlet UITextView *_textView;
+	NSMutableString *_log;
+}
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	[[RMBTController sharedInstance] setDelegate:self];
+	_log = [NSMutableString string];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)controller:(RMBTController*)controller didReceiveLog:(NSString*)log {
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	formatter.dateStyle = NSDateFormatterMediumStyle;
+	formatter.timeStyle = NSDateFormatterMediumStyle;
+	[_log appendFormat:@"[%@] %@\r", [formatter stringFromDate:[NSDate date]], log];
+	_textView.text = _log;
+}
+
+- (IBAction)forward:(id)sender {
+	[[RMBTController sharedInstance] sendChar:'f'];
+}
+
+- (IBAction)backward:(id)sender {
+	[[RMBTController sharedInstance] sendChar:'b'];
+}
+
+- (IBAction)right:(id)sender {
+	[[RMBTController sharedInstance] sendChar:'r'];
+}
+
+- (IBAction)left:(id)sender {
+	[[RMBTController sharedInstance] sendChar:'l'];
+}
+
+- (IBAction)stop:(id)sender {
+	[[RMBTController sharedInstance] sendChar:'s'];
+}
+
+- (IBAction)tiltPlus:(id)sender {
+	[[RMBTController sharedInstance] sendChar:'p'];
+}
+
+- (IBAction)tiltMinus:(id)sender {
+	[[RMBTController sharedInstance] sendChar:'m'];
 }
 
 @end

@@ -57,6 +57,8 @@
 		146854351973D72E00201248 /* RMBTPeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1468542E1973D71500201248 /* RMBTPeripheralInfo.m */; };
 		146854361973D72F00201248 /* RMBTPeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1468542E1973D71500201248 /* RMBTPeripheralInfo.m */; };
 		14DA3071197535B300A4A7DC /* ControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DA3070197535B300A4A7DC /* ControllerView.m */; };
+		14DB91C219782EBF00DF9F21 /* RMBTCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DA1973AB1D00E9E674 /* RMBTCommon.m */; };
+		14DB91C319782EC200DF9F21 /* RMBTController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144830DC1973AB1D00E9E674 /* RMBTController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -790,9 +792,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14DB91C219782EBF00DF9F21 /* RMBTCommon.m in Sources */,
 				1448315F1973ABF800E9E674 /* ViewController.m in Sources */,
 				144831561973ABF800E9E674 /* AppDelegate.m in Sources */,
 				144831521973ABF800E9E674 /* main.m in Sources */,
+				14DB91C319782EC200DF9F21 /* RMBTController.m in Sources */,
 				146854361973D72F00201248 /* RMBTPeripheralInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
